@@ -1,0 +1,686 @@
+body {
+  background-color: #fff1e6;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+}
+
+header {
+  background-color: #ff7f50;
+  color: white;
+  padding: 20px;
+  text-align: center;
+}
+
+section {
+  margin: 30px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  color: #ff7f50;
+}
+
+.tarjeta {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  max-width: 300px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.tarjeta:hover {
+  transform: scale(1.02);
+}
+
+.tarjeta button {
+  background-color: #fdd835;
+  color: #333;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.tarjeta button:hover {
+  background-color: #fbc02d;
+}
+
+#productos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+#carrito {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  max-width: 400px;
+}
+
+#carrito button {
+  background-color: #e53935;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#carrito button:hover {
+  background-color: #c62828;
+}
+
+form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  max-width: 400px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+form button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: #43a047;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  font-size: 0.9em;
+  color: #777;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+  }
+
+  .tarjeta, #carrito, form {
+    max-width: 100%;
+  }
+
+  header h1 {
+    font-size: 1.5em;
+  }
+
+  h2 {
+    font-size: 1.2em;
+  }
+}
+.productos {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #fff;
+}
+
+.productos h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.contenedor-productos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.producto {
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 20px;
+  width: 250px;
+  background-color: #fef9f4;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.producto img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.producto h3 {
+  margin: 10px 0;
+}
+
+.producto button {
+  background-color: #ffb84d;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.producto button:hover {
+  background-color: #e69a2b;
+}
+footer {
+  background-color: #f7f7f7;
+  color: #333;
+  padding: 20px;
+  text-align: center;
+  margin-top: 40px;
+  border-top: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.redes-sociales a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #0077cc;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.redes-sociales a:hover {
+  color: #ff6600;
+}
+.hero {
+  background-image: url('https://images.unsplash.com/photo-1601758123927-196d5f1f9c51?fit=crop&w=1400&q=80');
+  background-size: cover;
+  background-position: center;
+  padding: 80px 20px;
+  text-align: center;
+  color: white;
+}
+
+.hero-content {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: inline-block;
+  padding: 20px 40px;
+  border-radius: 16px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.boton-hero {
+  background-color: #ff9800;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.boton-hero:hover {
+  background-color: #e68900;
+}
+button {
+  transition: transform 0.2s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+.producto, .tarjeta {
+  transition: box-shadow 0.3s ease;
+}
+
+.producto:hover, .tarjeta:hover {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+.menu-superior {
+  background-color: #ffb84d;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.menu-superior ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  gap: 30px;
+}
+
+.menu-superior ul li {
+  position: relative;
+}
+
+.menu-superior ul li a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 12px;
+}
+
+.menu-superior ul li:hover > a {
+  background-color: #ffe0b2;
+  border-radius: 5px;
+}
+
+.menu-superior .submenu {
+  display: none;
+  position: absolute;
+  background-color: #fff7e6;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  top: 100%;
+  left: 0;
+  padding: 10px 0;
+  z-index: 99;
+}
+
+.menu-superior ul li:hover .submenu {
+  display: block;
+}
+
+.menu-superior .submenu li {
+  display: block;
+  padding: 5px 20px;
+}
+
+.menu-superior .submenu li a {
+  padding: 5px 10px;
+  display: block;
+  color: #444;
+}
+.barra-top {
+  background-color: #fef9f4;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 20px;
+  font-size: 0.9em;
+  border-bottom: 1px solid #ddd;
+}
+
+.barra-top a {
+  color: #333;
+  text-decoration: none;
+  margin-left: 15px;
+}
+
+.barra-top a:hover {
+  color: #ff7f50;
+}
+
+.barra-top i {
+  margin-right: 5px;
+}
+.banner {
+  background-image: url('https://via.placeholder.com/1200x400?text=Bienvenido+a+Huellas+de+Amor');
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  margin-bottom: 30px;
+  border-radius: 15px;
+}
+
+.banner-contenido {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px 40px;
+  border-radius: 10px;
+}
+
+.boton-banner {
+  display: inline-block;
+  margin-top: 15px;
+  background-color: #ffb84d;
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.boton-banner:hover {
+  background-color: #e69a2b;
+}
+.menu-superior {
+  background-color: #ffb84d;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.menu-superior ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  gap: 30px;
+}
+
+.menu-superior ul li {
+  position: relative;
+}
+
+.menu-superior ul li a {
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 12px;
+}
+
+.menu-superior ul li:hover > a {
+  background-color: #ffe0b2;
+  border-radius: 5px;
+}
+
+.menu-superior .submenu {
+  display: none;
+  position: absolute;
+  background-color: #fff7e6;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+  top: 100%;
+  left: 0;
+  padding: 10px 0;
+  z-index: 99;
+}
+
+.menu-superior ul li:hover .submenu {
+  display: block;
+}
+
+.menu-superior .submenu li {
+  display: block;
+  padding: 5px 20px;
+}
+
+.menu-superior .submenu li a {
+  padding: 5px 10px;
+  display: block;
+  color: #444;
+}
+.barra-top {
+  background-color: #fef9f4;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 20px;
+  font-size: 0.9em;
+  border-bottom: 1px solid #ddd;
+}
+
+.barra-top a {
+  color: #333;
+  text-decoration: none;
+  margin-left: 15px;
+}
+
+.barra-top a:hover {
+  color: #ff7f50;
+}
+
+.barra-top i {
+  margin-right: 5px;
+}
+.banner {
+  background-image: url('https://via.placeholder.com/1200x400?text=Bienvenido+a+Huellas+de+Amor');
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  margin-bottom: 30px;
+  border-radius: 15px;
+}
+
+.banner-contenido {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 20px 40px;
+  border-radius: 10px;
+}
+
+.boton-banner {
+  display: inline-block;
+  margin-top: 15px;
+  background-color: #ffb84d;
+  color: #333;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.boton-banner:hover {
+  background-color: #e69a2b;
+}
+.productos {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #fff1e6;
+}
+
+.productos h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #ff7f50;
+}
+
+.contenedor-productos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.producto {
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  padding: 20px;
+  width: 250px;
+  background-color: #fef9f4;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease;
+}
+
+.producto:hover {
+  transform: scale(1.03);
+}
+
+.producto img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.producto h3 {
+  margin: 10px 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.producto p {
+  margin: 5px 0 10px;
+  color: #666;
+}
+
+.producto button {
+  background-color: #ffb84d;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  color: #333;
+  font-weight: bold;
+}
+
+.producto button:hover {
+  background-color: #e69a2b;
+}
+#contacto {
+  padding: 60px 20px;
+  background-color: #fff1e6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#contacto h2 {
+  margin-bottom: 20px;
+  color: #ff6600;
+  font-size: 2em;
+}
+
+#contacto form {
+  width: 100%;
+  max-width: 450px;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+#contacto label {
+  font-weight: bold;
+  margin-top: 10px;
+  color: #555;
+}
+
+#contacto input,
+#contacto textarea {
+  margin-top: 8px;
+  margin-bottom: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95em;
+}
+
+#contacto button {
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#contacto button:hover {
+  background-color: #e68400;
+}
+
+/* Quiénes somos */
+#quienes-somos {
+  text-align: center;
+  max-width: 700px;
+  margin: 40px auto;
+  font-size: 1.1em;
+  line-height: 1.6;
+  color: #333;
+  padding: 10px;
+}
+
+/* Carrito de compras */
+#carrito {
+  max-width: 400px;
+  margin: 40px auto;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  padding: 25px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
+
+#carrito h2 {
+  color: #ff6600;
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+#lista-carrito {
+  list-style-type: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+#carrito button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+#carrito button:hover {
+  background-color: #c0392b;
+}
+/* Estilos responsive para celulares o pantallas pequeñas */
+@media (max-width: 768px) {
+  .contenedor-productos {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .producto {
+    width: 80%;
+    margin-bottom: 20px;
+  }
+
+  .barra-top, .menu-superior {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+button {
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #ff8800;
+}
+
+
+
+
+
+
+
+

@@ -5,59 +5,41 @@
   <title>Huellas de Amor</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
-<div class="top-bar">
-  <div class="top-left">
-    <a href="#contacto"><i class="fas fa-envelope"></i> Contacto</a>
-  </div>
-  <div class="top-right">
-    <a href="#" onclick="abrirModal('loginModal')"><i class="fas fa-user"></i> Entrar</a>
-    <a href="#" onclick="abrirModal('registerModal')"><i class="fas fa-user-plus"></i> Registrar</a>
-    <a href="javascript:void(0)" onclick="toggleCarrito()">
- <a href="javascript:void(0)" id="abrirCarrito">
-  <i class="fas fa-shopping-cart"></i> Carrito 
-  <span id="carrito-contador">0</span>
-</a>
 
-  </div>
-</div>
 
-<!-- Barra superior -->
- 
-<!-- === Modal Login === -->
+<!-- 🔹 Modal Login -->
 <div id="loginModal" class="modal">
   <div class="modal-content">
     <span class="cerrar" onclick="cerrarModal('loginModal')">&times;</span>
-    <h2>Iniciar sesión</h2>
+    <h2>Iniciar Sesión</h2>
     <form>
-      <label for="loginEmail">Correo:</label>
-      <input type="email" id="loginEmail" required>
-      <label for="loginPass">Contraseña:</label>
-      <input type="password" id="loginPass" required>
+      <input type="text" placeholder="Usuario" required>
+      <input type="password" placeholder="Contraseña" required>
       <button type="submit">Entrar</button>
     </form>
   </div>
 </div>
 
-<!-- === Modal Registro === -->
+<!-- 🔹 Modal Registro -->
 <div id="registerModal" class="modal">
   <div class="modal-content">
     <span class="cerrar" onclick="cerrarModal('registerModal')">&times;</span>
-    <h2>Registrar usuario</h2>
+    <h2>Registrarse</h2>
     <form>
-      <label for="regName">Nombre:</label>
-      <input type="text" id="regName" required>
-      <label for="regEmail">Correo:</label>
-      <input type="email" id="regEmail" required>
-      <label for="regPass">Contraseña:</label>
-      <input type="password" id="regPass" required>
+      <input type="text" placeholder="Nombre" required>
+      <input type="email" placeholder="Correo" required>
+      <input type="password" placeholder="Contraseña" required>
       <button type="submit">Registrar</button>
     </form>
   </div>
 </div>
+
+
 <body>
   
 <!-- Franja de beneficios -->
@@ -76,45 +58,6 @@
 </div>
 
 <!-- Menú superior -->
-<nav class="menu-superior">
-  <ul>
-    <li><a href="#perros">🐶 PERROS</a>
-      <ul class="submenu">
-        <li><a href="#perros-accesorios">Accesorios</a></li>
-        <li><a href="#perros-alimentos">Alimentos</a></li>
-        <li><a href="#perros-camas">Camas</a></li>
-        <li><a href="#perros-cepillos">Cepillos</a></li>
-        <li><a href="#perros-gimnasio">Gimnasio</a></li>
-      </ul>
-    </li>
-
-    <li><a href="#gatos">🐱 GATOS</a>
-      <ul class="submenu">
-        <li><a href="#gatos-rascadores">Rascadores y Gimnasios</a></li>
-        <li><a href="#gatos-camas">Camas</a></li>
-        <li><a href="#gatos-areneras">Areneras</a></li>
-        <li><a href="#gatos-aseo">Aseo y Cepillos</a></li>
-      </ul>
-    </li>
-
-    <li><a href="#aves">🦜 AVES</a>
-      <ul class="submenu">
-        <li><a href="#aves-accesorios">Accesorios</a></li>
-        <li><a href="#aves-alimentos">Alimentos</a></li>
-        <li><a href="#aves-jaulas">Jaulas y Perchas</a></li>
-      </ul>
-    </li>
-
-    <li><a href="#peces">🐠 PECES</a>
-      <ul class="submenu">
-        <li><a href="#peces-alimentos">Alimentos</a></li>
-        <li><a href="#peces-filtros">Filtros y Bombas</a></li>
-        <li><a href="#peces-accesorios">Accesorios</a></li>
-        <li><a href="#peces-acuarios">Acuarios</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
 
   <header>
     <!-- Menú superior fijo -->
@@ -130,27 +73,63 @@
   </section>
 
   <!-- Nombre de la tienda -->
-  <h1><i class="fa-solid fa-paw"></i> Huellas de Amor <i class="fa-solid fa-paw"></i></h1>
-  <p>Productos para el bienestar de tus mascotas</p>
+  
 </header>
 
-<!-- Buscador general (fuera del header) -->
-<div class="buscador" style="text-align:center; margin:12px 0;">
-  <input id="buscador" type="text" placeholder="🔍 Buscar productos..." 
-         style="padding:10px 14px; width:320px; border:1px solid #ddd; border-radius:8px; outline:none;">
-</div>
 
-<!-- Botones de categorías -->
-<div class="filtros" style="display:flex; gap:10px; justify-content:center; margin:10px 0 20px;">
-  <button class="filtro activo" onclick="filtrarCategoria('todo', this)">Todos</button>
-  <button class="filtro" onclick="filtrarCategoria('perros', this)">Perros</button>
-  <button class="filtro" onclick="filtrarCategoria('gatos', this)">Gatos</button>
-  <button class="filtro" onclick="filtrarCategoria('aves', this)">Aves</button>
-  <button class="filtro" onclick="filtrarCategoria('peces', this)">Peces</button>
-</div>
+<body>
 
+ <header class="main-header">
+  <div class="top-bar">
+    <div class="top-left">
+      <a href="javascript:void(0)" class="opcion-header" onclick="abrirModal('modalContacto')">
+  <i class="fas fa-envelope"></i> Contacto
+</a>
+
+      <a href="javascript:void(0)" onclick="abrirModal('loginModal')" class="opcion-header"><i class="fas fa-user"></i> Entrar</a>
+      <a href="javascript:void(0)" onclick="abrirModal('registerModal')" class="opcion-header"><i class="fas fa-user-plus"></i> Registrar</a>
+      <a href="javascript:void(0)" id="abrirCarrito" class="opcion-header">
+        <i class="fas fa-shopping-cart"></i> Carrito 
+        <span id="carrito-contador">0</span>
+      </a>
+    </div>
+
+    <div class="top-right">
+      <input type="text" id="buscador" placeholder="🔍 Buscar productos..." class="buscador">
+      <button class="btn-todos">🐾 Todos</button>
+    </div>
+  </div>
+
+
+
+    <!-- Menú de categorías -->
+    
+<section class="categorias">
+  <h2>¡Busca por tu mascota!</h2>
+  <div class="categorias-grid">
+    <a href="#perros" class="categoria">
+      <img src="images/perro.png" alt="Perros">
+      <p>Perros</p>
+    </a>
+    <a href="#gatos" class="categoria">
+      <img src="images/gato.png" alt="Gatos">
+      <p>Gatos</p>
+    </a>
+    <a href="#aves" class="categoria">
+      <img src="images/ave.png" alt="Aves">
+      <p>Aves</p>
+    </a>
+    <a href="#peces" class="categoria">
+      <img src="images/peces.png" alt="Peces">
+      <p>Peces</p>
+    </a>
+  </div>
+</section>
+
+  </header>
+
+  
 <section class="productos" id="productos">
-
   <h2>Nuestros Productos</h2>
   <div class="contenedor-productos">
 
@@ -158,7 +137,6 @@
     <!-- 🐶 Productos para Perros -->
      
    
-
     <h3 id="perros">🐶 Productos para Perros</h3>
 
     <div class="producto" data-categoria="perros">
@@ -283,7 +261,9 @@
 </div>
 
     <!-- 🐱 Productos para Gatos -->
-    <h3 id="gatos">🐱 Productos para Gatos</h3>
+
+
+<h3 id="gatos">🐱 Productos para Gatos</h3>
 
     <div class="producto" data-categoria="gatos">
       <img src="images/comedero.jpg" alt="Comedero para gato">
@@ -412,6 +392,7 @@
       <p>$19.000</p>
       <button onclick="agregarAlCarrito('Accesorio para ave', 8000)">Agregar al carrito</button>
     </div>
+
     <div class="producto">
   <img src="images/comedero-grande.jpg" alt="Comedero grande para aves">
   <h4>Comedero Grande para Aves</h4>
@@ -461,6 +442,7 @@
 </div>
 
     <!-- 🐟 Productos para Peces -->
+     
     <h3 id="peces">🐟 Productos para Peces</h3>
     <div class="producto" data-categoria="peces">
   <img src="images/tetra-min-granulado.jpg" alt="Tetra Min Granulado 100g">
@@ -560,66 +542,97 @@
       <button onclick="agregarAlCarrito('Acuario mediano', 85000)">Agregar al carrito</button>
     </div>
 
-<!-- Franja Huellas de Amor -->
-<div class="franja-huellas">
-  <div class="franja-img">
-    <img src="images/gato.jpg" alt="Gato Huellas de Amor">
+<!-- SLIDER  -->
+<section class="hero-slider">
+  <div class="slide active">
+    <img src="images/slide1.jpg" alt="Perro feliz">
+    <div class="texto-slide">
+      <h2>El mejor alimento para tu mascota</h2>
+      <p>Nutrición y calidad para que siempre estén sanos y felices</p>
+      <a href="#productos" class="btn-comprar">Comprar ahora</a>
+    </div>
   </div>
-  <div class="franja-texto">
-    <p class="promo-sub">Cuida lo que amas</p>
-    <h2 class="promo-titulo">Promoción especial</h2>
-    <p class="promo-desc">Los mejores productos para tu mascota a precios increíbles.</p>
-    <button class="btn-comprar">Comprar ahora</button>
-  </div>
-</div>
 
+  <div class="slide">
+    <img src="images/slide2.jpg" alt="Gato adorable">
+    <div class="texto-slide">
+      <h2>Consiente a tu gato</h2>
+      <p>Rascadores, camas y juguetes que amará</p>
+      <a href="#productos" class="btn-comprar">Comprar ahora</a>
+    </div>
   </div>
+
+  <div class="slide">
+    <img src="images/slide3.jpg" alt="Accesorios de mascotas">
+    <div class="texto-slide">
+      <h2>Accesorios únicos</h2>
+      <p>Todo lo que tu mascota necesita en un solo lugar</p>
+      <a href="#productos" class="btn-comprar">Comprar ahora</a>
+    </div>
+  </div>
+
+  <!-- Botones navegación -->
+  <button class="prev">❮</button>
+  <button class="next">❯</button>
 </section>
 
 <!-- QUIÉNES SOMOS -->
-<section id="quienes" class="quienes-somos">
-  <div class="quienes-contenido">
-    <h2>¿Quiénes somos?</h2>
-    <p>
-      En <strong>Huellas de Amor</strong> trabajamos cada día para darle lo mejor 
-      a tus mascotas 🐾. Ofrecemos productos de calidad, atención cercana y un 
-      servicio que refleja nuestro amor por los animales. ❤️
-    </p>
-    <p>
-      Nuestro compromiso es que cada huella deje amor, y que cada cliente se 
-      sienta parte de esta gran familia peluda. 🐶🐱🐹🐦
-    </p>
+
+<section class="quienes-somos">
+  <div class="contenedor-quienes">
+    <div class="texto-quienes">
+      <h2>¿Quiénes somos?</h2>
+      <p>
+        En <span class="marca">Huellas de Amor</span> creemos que cada mascota merece amor, cuidado y alegría.  
+        Nuestro compromiso es ofrecer productos que abracen su bienestar 🐾 y atención que acaricie el corazón ❤️.
+      </p>
+      <div class="frase-destacada">
+        “Cada huella deja amor, cada cliente es familia.” 🧡
+      </div>
+      <ul class="lista-valores">
+        <li>🐾 Productos pensados con cariño.</li>
+        <li>🐾 Atención personalizada y cercana.</li>
+        <li>🐾 Comunidad que comparte amor por los animales.</li>
+      </ul>
+      <a href="#productos" class="btn-descubre">Descubre más</a>
+    </div>
+
+    <div class="imagen-quienes">
+      <img src="images/mascota-abrazada.png" alt="Mascota feliz con su dueño">
+    </div>
   </div>
- <div class="quienes-imagenes">
-  <img src="images/quienes1.jpg" alt="Mascota feliz">
-  <img src="images/quienes2.jpg" alt="Cliente con su mascota">
-</div>
+  
 </section>
 
+
   <!-- Productos para Gatos -->
+
 <section class="productos">
   <h2>Productos para Gatos</h2>
   <div class="contenedor-productos">
 
     <div class="producto">
-      <img src="gato1.jpg" alt="Petizoos Rascador Flor Mediano Rojo">
+      <img src="images/gato1.jpg" alt="Petizoos Rascador Flor Mediano Rojo">
       <h4>Petizoos Rascador Flor Mediano Rojo</h4>
       <p>$139.900</p>
-      <button>Agregar al carrito</button>
+      <button onclick="agregarAlCarrito('Petizoos Rascador Flor Mediano Rojo', 139900)">Agregar al carrito</button>
+
     </div>
 
     <div class="producto">
-      <img src="gato2.jpg" alt="Gimnasio Árbol con Cama">
+      <img src="images/gato2.jpg" alt="Gimnasio Árbol con Cama">
       <h4>Gimnasio Árbol con Cama</h4>
       <p>$127.200</p>
-      <button>Agregar al carrito</button>
+      <button onclick="agregarAlCarrito('Gimnasio Árbol con Cama', 127200)">Agregar al carrito</button>
+
     </div>
 
     <div class="producto">
-      <img src="gato3.jpg" alt="Maos Gimnasio Rascador Mediano Beige">
+      <img src="images/gato3.jpg" alt="Maos Gimnasio Rascador Mediano Beige">
       <h4>Maos Gimnasio Rascador Mediano Beige</h4>
       <p>$244.900</p>
-      <button>Agregar al carrito</button>
+      <button onclick="agregarAlCarrito('Maos gimnasio Rascador Mediano Beige', 244900)">Agregar al carrito</button>
+
     </div>
     <div class="producto" data-categoria="gatos">
   <img src="images/arenera-filter.jpg" alt="Arenera Filter Cat">
@@ -643,10 +656,10 @@
 </div>
 
     <div class="producto">
-      <img src="gato4.jpg" alt="Rascador Cartón Corrugado con Catnip">
+      <img src="images/gato4.jpg" alt="Rascador Cartón Corrugado con Catnip">
       <h4>Rascador Cartón Corrugado con Catnip</h4>
       <p>$20.330</p>
-      <button>Agregar al carrito</button>
+      <button onclick="agregarAlCarrito('Rascador Cartón Corrugado con Catnip', 20330)">Agregar al carrito</button>
     </div>
 
     <div class="producto" data-categoria="gatos">
@@ -673,33 +686,6 @@
     <button class="finalizar-compra">Finalizar compra</button>
   </div>
 </div>
-
-
- <section class="contacto" id="contacto">
-  <div class="contacto-contenido">
-    <!-- Título y descripción -->
-    <h2><i class="fas fa-envelope"></i> Contáctanos</h2>
-    <p>¿Tienes alguna duda o quieres compartir algo con nosotros?  
-       Estamos aquí para escucharte con cariño 🐾</p>
-
-    <!-- Decoraciones -->
-    <div class="decor decor-huellas">🐾</div>
-    <div class="decor decor-hueso">🦴</div>
-    <div class="decor decor-pez">🐟</div>
-    <div class="decor decor-ave">🕊️</div>
-
-    <!-- Imagen de perrito -->
-    <img src="images/perrito.png" alt="Perrito feliz" class="contacto-img" loading="lazy">
-
-    <!-- Formulario -->
-    <form>
-      <input type="text" placeholder="🐶 Tu nombre" required>
-      <input type="email" placeholder="📧 Tu correo" required>
-      <textarea placeholder="✍️ Tu mensaje" required></textarea>
-      <button type="submit">Enviar mi mensaje</button>
-    </form>
-  </div>
-</section>
 
 
 <footer class="footer">
@@ -806,6 +792,20 @@ document.addEventListener('DOMContentLoaded', function () {
 <script src="script.js"></script>
 
 <button id="btn-arriba">↑</button>
+
+<div id="modalContacto" class="modal">
+  <div class="modal-contenido">
+    <span class="cerrar" onclick="cerrarModal('modalContacto')">&times;</span>
+    <h2>Contáctanos 🐾</h2>
+    <p>¿Tienes alguna duda o quieres compartir algo con nosotros?<br>Estamos aquí para escucharte con cariño 🧡</p>
+    <form>
+      <input type="text" placeholder="🐶 Tu nombre" required>
+      <input type="email" placeholder="📧 Tu correo" required>
+      <textarea placeholder="✍️ Tu mensaje" required></textarea>
+      <button type="submit" class="btn-principal">Enviar mi mensaje</button>
+    </form>
+  </div>
+</div>
 
 </body>
 </html>

@@ -1,811 +1,239 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Huellas de Amor</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <title>Huellas de Amor | Petshop</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Fuentes + Iconos -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Estilos -->
+  <link rel="stylesheet" href="style.css" />
 </head>
-
-
-<!-- 🔹 Modal Login -->
-<div id="loginModal" class="modal">
-  <div class="modal-content">
-    <span class="cerrar" onclick="cerrarModal('loginModal')">&times;</span>
-    <h2>Iniciar Sesión</h2>
-    <form>
-      <input type="text" placeholder="Usuario" required>
-      <input type="password" placeholder="Contraseña" required>
-      <button type="submit">Entrar</button>
-    </form>
-  </div>
-</div>
-
-<!-- 🔹 Modal Registro -->
-<div id="registerModal" class="modal">
-  <div class="modal-content">
-    <span class="cerrar" onclick="cerrarModal('registerModal')">&times;</span>
-    <h2>Registrarse</h2>
-    <form>
-      <input type="text" placeholder="Nombre" required>
-      <input type="email" placeholder="Correo" required>
-      <input type="password" placeholder="Contraseña" required>
-      <button type="submit">Registrar</button>
-    </form>
-  </div>
-</div>
-
-
 <body>
   
-<!-- Franja de beneficios -->
-<div class="beneficios">
-  <div class="beneficio">
-    <i class="fa-solid fa-shield-halved"></i> Compras seguras online
-  </div>
-  <div class="separador">|</div>
-  <div class="beneficio">
-    <i class="fa-solid fa-hand-holding-dollar"></i> Pago contra entrega
-  </div>
-  <div class="separador">|</div>
-  <div class="beneficio">
-    <i class="fa-solid fa-truck-fast"></i> Entregas el mismo día
-  </div>
-</div>
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="#">
+        <img src="images/logo.svg" alt="Huellas de Amor" class="brand__logo">
+        <span class="brand__name">Huellas de Amor</span>
+      </a>
 
-<!-- Menú superior -->
+      <nav class="nav">
+        <button class="nav__link" data-cat="perros"><i class="fa-solid fa-dog"></i> Perros</button>
+        <button class="nav__link" data-cat="gatos"><i class="fa-solid fa-cat"></i> Gatos</button>
+        <button class="nav__link" data-cat="aves"><i class="fa-solid fa-dove"></i> Aves</button>
+        <button class="nav__link" data-cat="peces"><i class="fa-solid fa-fish"></i> Peces</button>
+        <button class="nav__link" data-cat="todos"><i class="fa-solid fa-table-cells-large"></i> Todos</button>
+      </nav>
 
-  <header>
-    <!-- Menú superior fijo -->
+      <div class="actions">
+        <div class="search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input id="buscador" type="text" placeholder="Buscar productos…" />
+        </div>
+        <button id="btnCarrito" class="cart">
+          <i class="fa-solid fa-cart-shopping"></i><span id="carrito-contador">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
 
+  <!-- Slider -->
+  <section class="hero">
+    <div class="hero__slider" id="slider">
+      <div class="hero__slide active" style="--bg:url('images/slide1.jpg')">
+        <div class="hero__content container">
+          <h1>Cuida a tu mejor amigo</h1>
+          <p>Nutrición y bienestar al mejor precio.</p>
+          <a class="btn btn--primary" data-cat="perros" href="#catalogo">Comprar ahora</a>
+        </div>
+      </div>
+      <div class="hero__slide" style="--bg:url('images/slide2.jpg')">
+        <div class="hero__content container">
+          <h1>Todo para gatos felices</h1>
+          <p>Rascadores, arenas y juguetes irresistibles.</p>
+          <a class="btn btn--primary" data-cat="gatos" href="#catalogo">Ver productos</a>
+        </div>
+      </div>
+      <div class="hero__slide" style="--bg:url('images/slide3.jpg')">
+        <div class="hero__content container">
+          <h1>Acuarios listos para brillar</h1>
+          <p>Filtros, iluminación y decoración.</p>
+          <a class="btn btn--primary" data-cat="peces" href="#catalogo">Explorar</a>
+        </div>
+      </div>
+    </div>
 
-  <!-- Banner principal -->
-  <section class="banner">
-    <div class="banner-contenido">
-      <h2>🐾 ¡Bienvenido a Huellas de Amor!</h2>
-      <p>Cuida y consiente a tu mascota con nuestros productos especiales</p>
-      <a href="#productos" class="boton-banner">Ver productos</a>
+    <button class="hero__nav prev" id="prev"><i class="fa-solid fa-chevron-left"></i></button>
+    <button class="hero__nav next" id="next"><i class="fa-solid fa-chevron-right"></i></button>
+  </section>
+
+  <!-- Beneficios -->
+  <section class="benefits">
+    <div class="container benefits__grid">
+      <div class="benefit"><i class="fa-solid fa-truck-fast"></i> Entrega el mismo día</div>
+      <div class="benefit"><i class="fa-solid fa-shield"></i> Compra segura</div>
+      <div class="benefit"><i class="fa-solid fa-hand-holding-dollar"></i> Pago contra entrega</div>
+      <div class="benefit"><i class="fa-solid fa-rotate"></i> Cambios fáciles</div>
     </div>
   </section>
 
-  <!-- Nombre de la tienda -->
+  <!-- Categorías destacadas -->
+  <section class="featured-cats container">
+    <h2 class="section-title">Busca por tu mascota</h2>
+    <div class="featured-cats__grid">
+      <button class="cat-card" data-cat="perros">
+        <img src="images/cat-perros.png" alt="Perros"><span>Perros</span>
+      </button>
+      <button class="cat-card" data-cat="gatos">
+        <img src="images/cat-gatos.png" alt="Gatos"><span>Gatos</span>
+      </button>
+      <button class="cat-card" data-cat="aves">
+        <img src="images/cat-aves.png" alt="Aves"><span>Aves</span>
+      </button>
+      <button class="cat-card" data-cat="peces">
+        <img src="images/cat-peces.png" alt="Peces"><span>Peces</span>
+      </button>
+    </div>
+  </section>
+
   
-</header>
-
-
-<body>
-
- <header class="main-header">
-  <div class="top-bar">
-    <div class="top-left">
-      <a href="javascript:void(0)" class="opcion-header" onclick="abrirModal('modalContacto')">
-  <i class="fas fa-envelope"></i> Contacto
-</a>
-
-      <a href="javascript:void(0)" onclick="abrirModal('loginModal')" class="opcion-header"><i class="fas fa-user"></i> Entrar</a>
-      <a href="javascript:void(0)" onclick="abrirModal('registerModal')" class="opcion-header"><i class="fas fa-user-plus"></i> Registrar</a>
-      <a href="javascript:void(0)" id="abrirCarrito" class="opcion-header">
-        <i class="fas fa-shopping-cart"></i> Carrito 
-        <span id="carrito-contador">0</span>
-      </a>
-    </div>
-
-    <div class="top-right">
-      <input type="text" id="buscador" placeholder="🔍 Buscar productos..." class="buscador">
-      <button class="btn-todos">🐾 Todos</button>
-    </div>
-  </div>
-
-
-
-    <!-- Menú de categorías -->
-    
-<section class="categorias">
-  <h2>¡Busca por tu mascota!</h2>
-  <div class="categorias-grid">
-    <a href="#perros" class="categoria">
-      <img src="images/perro.png"alt="Perros">
-      <p>Perros</p>
-    </a>
-    <a href="#gatos" class="categoria">
-      <img src="images/gato.png" alt="Gatos">
-      <p>Gatos</p>
-    </a>
-    <a href="#aves" class="categoria">
-      <img src="images/ave.png" alt="Aves">
-      <p>Aves</p>
-    </a>
-    <a href="#peces" class="categoria">
-      <img src="images/peces.png" alt="Peces">
-      <p>Peces</p>
-    </a>
+  <!-- Categorías destacadas -->
+<section class="subcats container" id="subcategorias">
+  <h2 class="section-title">Categorías Destacadas</h2>
+  <div class="subcats__grid">
+    <button class="subcat-card" data-cat="alimento-perro">
+      <img src="images/cat-alimento-perro.png" alt="Alimento perro">
+      <span>Alimentos perro</span>
+    </button>
+    <button class="subcat-card" data-cat="alimento-gatos">
+      <img src="images/cat-alimento-gato.png" alt="Alimento gatos">
+      <span>Alimentos gatos</span>
+    </button>
+    <button class="subcat-card" data-cat="snacks">
+      <img src="images/cat-snacks.png" alt="Snacks cremosos">
+      <span>Snacks cremosos</span>
+    </button>
+    <button class="subcat-card" data-cat="congelado">
+      <img src="images/cat-congelado.png" alt="Alimento congelado">
+      <span>Alimento congelado</span>
+    </button>
+    <button class="subcat-card" data-cat="antipulgas">
+      <img src="images/cat-antipulgas.png" alt="Antipulgas">
+      <span>Antipulgas</span>
+    </button>
+    <button class="subcat-card" data-cat="paseo">
+      <img src="images/cat-paseo.png" alt="Paseo">
+      <span>Paseo</span>
+    </button>
+    <button class="subcat-card" data-cat="juguetes">
+      <img src="images/cat-juguetes.png" alt="Juguetes">
+      <span>Juguetes</span>
+    </button>
+    <button class="subcat-card" data-cat="arenas">
+      <img src="images/cat-arenas.png" alt="Arenas">
+      <span>Arenas</span>
+    </button>
+    <button class="subcat-card" data-cat="ofertas">
+      <img src="images/cat-ofertas.png" alt="Ofertas del mes">
+      <span>Ofertas del mes</span>
+    </button>
+    <button class="subcat-card" data-cat="combos">
+      <img src="images/cat-combos.png" alt="Combos de locura">
+      <span>Combos de locura</span>
+    </button>
   </div>
 </section>
 
-  </header>
 
-  
-<section class="productos" id="productos">
-  <h2>Nuestros Productos</h2>
-  <div class="contenedor-productos">
+  <!-- Catálogo -->
+  <section class="catalogo container" id="catalogo" hidden>
+    <div class="catalogo__header">
+      <h2 class="section-title" id="tituloCatalogo">Catálogo</h2>
+      <small id="contadorResultados"></small>
+    </div>
+    <div class="grid" id="gridProductos"></div>
+  </section>
 
-
-    <!-- 🐶 Productos para Perros -->
-     
    
-    <h3 id="perros">🐶 Productos para Perros</h3>
 
-    <div class="producto" data-categoria="perros">
-      <img src="images/juguete-perro.jpg" alt="Juguete para perro">
-      <h4>Juguete para perro</h4>
-      <p>$15.000</p>
-      <button onclick="agregarAlCarrito('Juguete para perro', 15000)">Agregar al carrito</button>
+  <!-- 🔹 Ofertas temporales -->
+  <section class="oferta-flash">
+    <div class="container">
+      <h2>🔥 Oferta Especial: 20% OFF en Alimento Premium</h2>
+      <p>Solo por tiempo limitado</p>
+      <div id="contador" class="contador"></div>
+      <a href="#catalogo" class="btn btn--primary">Aprovechar oferta</a>
     </div>
+  </section>
 
-    
-
-    <div class="producto" data-categoria="perros">
-      <img src="images/collar.jpg" alt="Collar para perro">
-      <h4>Collar para perro</h4>
-      <p>$10.000</p>
-      <button onclick="agregarAlCarrito('Collar para perro', 10000)">Agregar al carrito</button>
+  <!-- 🔹 Productos recomendados -->
+  <section class="recomendados container">
+    <h2 class="section-title">Productos recomendados</h2>
+    <div class="carrusel" id="carruselRecomendados">
+      <!-- Se llena con JS -->
     </div>
-
-    <div class="producto" data-categoria="perros">
-      <img src="images/champus.jpg" alt="Champú para mascotas">
-      <h4>Champú para mascotas</h4>
-      <p>$18.000</p>
-      <button onclick="agregarAlCarrito('Champú para mascotas', 18000)">Agregar al carrito</button>
-    </div>
-
-    <div class="producto" data-categoria="perros">
-  <img src="images/pelota-caucho.jpg" alt="Pelota de caucho resistente">
-  <h4>Pelota de caucho resistente</h4>
-  <p>$18.000</p>
-  <button onclick="agregarAlCarrito('Pelota de caucho resistente', 18000)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="perros">
-  <img src="images/cuerda-trenzada.jpg" alt="Juguete tipo cuerda trenzada">
-  <h4>Juguete tipo cuerda trenzada</h4>
-  <p>$22.000</p>
-  <button onclick="agregarAlCarrito('Juguete tipo cuerda trenzada', 22000)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="perros">
-  <img src="images/kong-clasico.jpg" alt="Kong clásico (interactivo y rellenable)">
-  <h4>Kong clásico (interactivo y rellenable)</h4>
-  <p>$65.000</p>
-  <button onclick="agregarAlCarrito('Kong clásico (interactivo y rellenable)', 65000)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="perros">
-  <img src="images/mordedor-nylon.jpg" alt="Mordedor de nylon para limpieza dental">
-  <h4>Mordedor de nylon para limpieza dental</h4>
-  <p>$28.000</p>
-  <button onclick="agregarAlCarrito('Mordedor de nylon para limpieza dental', 28000)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="perros">
-  <img src="images/juguete-peluche.jpg" alt="Juguete chillón de peluche">
-  <h4>Juguete chillón de peluche</h4>
-  <p>$15.000</p>
-  <button onclick="agregarAlCarrito('Juguete chillón de peluche', 15000)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="perros">
-  <img src="images/guante-pelo.jpg" alt="Guante removedor de pelo">
-  <h4>Guante removedor de pelo</h4>
-  <p>$13.500</p>
-  <button onclick="agregarAlCarrito('Guante removedor de pelo', 13500)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="perros">
-  <img src="images/cepillo-bano.jpg" alt="Cepillo de baño suave">
-  <h4>Cepillo de baño suave</h4>
-  <p>$10.000</p>
-  <button onclick="agregarAlCarrito('Cepillo de baño suave', 10000)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="perros">
-  <img src="images/shampoo-neutro.jpg" alt="Shampoo neutro para perros">
-  <h4>Shampoo neutro para perros</h4>
-  <p>$22.000</p>
-  <button onclick="agregarAlCarrito('Shampoo neutro para perros', 22000)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="perros">
-  <img src="images/toallitas-humedas.jpg" alt="Toallitas húmedas para mascotas">
-  <h4>Toallitas húmedas para mascotas</h4>
-  <p>$18.000</p>
-  <button onclick="agregarAlCarrito('Toallitas húmedas para mascotas', 18000)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="perros">
-  <img src="images/cortaunas.jpg" alt="Cortaúñas con protector">
-  <h4>Cortaúñas con protector</h4>
-  <p>$14.000</p>
-  <button onclick="agregarAlCarrito('Cortaúñas con protector', 14000)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="perros">
-  <img src="images/cama-dona.jpg" alt="Cama tipo dona peluche (talla M)">
-  <h4>Cama tipo dona peluche (talla M)</h4>
-  <p>$85.000</p>
-  <button onclick="agregarAlCarrito('Cama tipo dona peluche (talla M)', 85000)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="perros">
-  <img src="images/cama-ortopedica.jpg" alt="Cama ortopédica viscoelástica (raza grande)">
-  <h4>Cama ortopédica viscoelástica (raza grande)</h4>
-  <p>$169.000</p>
-  <button onclick="agregarAlCarrito('Cama ortopédica viscoelástica (raza grande)', 169000)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="perros">
-  <img src="images/cama-elevada.jpg" alt="Cama elevada en lona antifluidos">
-  <h4>Cama elevada en lona antifluidos</h4>
-  <p>$179.900</p>
-  <button onclick="agregarAlCarrito('Cama elevada en lona antifluidos', 179900)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="perros">
-  <img src="images/cama-reversible.jpg" alt="Cama reversible lavable (mediana)">
-  <h4>Cama reversible lavable (mediana)</h4>
-  <p>$139.990</p>
-  <button onclick="agregarAlCarrito('Cama reversible lavable (mediana)', 139990)">Agregar al carrito</button>
-</div>
-
-    <!-- 🐱 Productos para Gatos -->
-
-
-<h3 id="gatos">🐱 Productos para Gatos</h3>
-
-    <div class="producto" data-categoria="gatos">
-      <img src="images/comedero.jpg" alt="Comedero para gato">
-      <h4>Comedero para gato</h4>
-      <p>$12.000</p>
-      <button onclick="agregarAlCarrito('Comedero para gato', 12000)">Agregar al carrito</button>
-    </div>
-    
-    <div class="producto">
-      <img src="images/cama-gato.jpg" alt="Cama para gato">
-      <h4>Cama para gato</h4>
-      <p>$35.000</p>
-      <button onclick="agregarAlCarrito('Cama para gato', 35000)">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-      <img src="images/arena-gato.jpg" alt="Arena sanitaria para gatos">
-      <h4>Arena sanitaria para gatos</h4>
-      <p>$20.000</p>
-      <button onclick="agregarAlCarrito('Arena sanitaria para gatos', 20000)">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-      <img src="images/gimnasio-gato.jpg" alt="Gimnasio para gato">
-      <h4>Gimnasio para gato</h4>
-      <p>$65.000</p>
-      <button onclick="agregarAlCarrito('Gimnasio para gato', 65000)">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-      <img src="images/juguetes-gato.jpg" alt="Juguetes para gato">
-      <h4>Juguetes para gato</h4>
-      <p>$18.000</p>
-      <button onclick="agregarAlCarrito('Juguetes para gato', 18000)">Agregar al carrito</button>
-    </div>
-    
-    <!-- 🐱 Productos para Gatos - Rascadores y Gimnasios -->
-<div class="producto" data-categoria="gatos">
-  <img src="images/kasa-rascador.jpg" alt="Kasa Rascador">
-  <h4>Kasa Rascador</h4>
-  <p>$85.000</p>
-  <button onclick="agregarAlCarrito('Kasa Rascador', 85000)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="gatos">
-  <img src="images/rascador-rodillo.jpg" alt="Rascador Gato Rodillo">
-  <h4>Rascador Gato Rodillo</h4>
-  <p>$38.000</p>
-  <button onclick="agregarAlCarrito('Rascador Gato Rodillo', 38000)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="gatos">
-  <img src="images/kasa-gym.jpg" alt="Kasa GYM">
-  <h4>Kasa GYM</h4>
-  <p>$85.000</p>
-  <button onclick="agregarAlCarrito('Kasa GYM', 85000)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="gatos">
-  <img src="images/gimnasio-dos-torres.jpg" alt="Gimnasio Gato Dos Torres">
-  <h4>Gimnasio Gato Dos Torres</h4>
-  <p>$85.500</p>
-  <button onclick="agregarAlCarrito('Gimnasio Gato Dos Torres', 85500)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="gatos">
-  <img src="images/gimnasio-repisa.jpg" alt="Gimnasio Repisa">
-  <h4>Gimnasio Repisa</h4>
-  <p>$59.500</p>
-  <button onclick="agregarAlCarrito('Gimnasio Repisa', 59500)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="gatos">
-  <img src="images/gimnasio-escalera.jpg" alt="Gimnasio Escalera">
-  <h4>Gimnasio Escalera</h4>
-  <p>$187.000</p>
-  <button onclick="agregarAlCarrito('Gimnasio Escalera', 187000)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="gatos">
-  <img src="images/kasa-cama.jpg" alt="Kasa Cama">
-  <h4>Kasa Cama</h4>
-  <p>$85.000</p>
-  <button onclick="agregarAlCarrito('Kasa Cama', 85000)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="gatos">
-  <img src="images/kasa-base-cama.jpg" alt="Kasa Base Cama">
-  <h4>Kasa Base Cama</h4>
-  <p>$31.500</p>
-  <button onclick="agregarAlCarrito('Kasa Base Cama', 31500)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="gatos">
-  <img src="images/kasa-relax-pez.jpg" alt="Kasa Relax Pez">
-  <h4>Kasa Relax Pez</h4>
-  <p>$85.000</p>
-  <button onclick="agregarAlCarrito('Kasa Relax Pez', 85000)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="gatos">
-  <img src="images/arenera-box.jpg" alt="Baño Arenera Box">
-  <h4>Baño Arenera Box</h4>
-  <p>$127.000</p>
-  <button onclick="agregarAlCarrito('Baño Arenera Box', 127000)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="gatos">
-  <img src="images/arenera-elegant.jpg" alt="Baño Arenera Gato – Elegant Cat Clean">
-  <h4>Baño Arenera Gato – Elegant Cat Clean</h4>
-  <p>$115.500</p>
-  <button onclick="agregarAlCarrito('Baño Arenera Gato – Elegant Cat Clean', 115500)">Agregar al carrito</button>
-</div>
-
-
-
-
-
-  
-    <!-- 🐦 Productos para Aves -->
-    <h3 id="aves">🐦 Productos para Aves</h3>
-
-    <div class="producto">
-      <img src="images/accesorio-ave.jpg" alt="Accesorio para ave">
-      <h4>Accesorio para ave</h4>
-      <p>$19.000</p>
-      <button onclick="agregarAlCarrito('Accesorio para ave', 8000)">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-  <img src="images/comedero-grande.jpg" alt="Comedero grande para aves">
-  <h4>Comedero Grande para Aves</h4>
-  <p>$35.000</p>
-  <button onclick="agregarAlCarrito('Comedero Grande para Aves', 5000)">Agregar al carrito</button>
-</div>
-
-    <div class="producto">
-      <img src="images/bebedero-ave.jpg" alt="Bebedero para ave">
-      <h4>Bebedero para ave</h4>
-      <p>$6.000</p>
-      <button onclick="agregarAlCarrito('Bebedero para ave', 15000)">Agregar al carrito</button>
-    </div>
-    <div class="producto" data-categoria="aves">
-  <img src="images/escalera-madera.jpg" alt="Escalera de madera para jaula (30 cm)">
-  <h4>Escalera de madera para jaula (30 cm)</h4>
-  <p>$12.000</p>
-  <button onclick="agregarAlCarrito('Escalera de madera para jaula (30 cm)', 12000)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="aves">
-  <img src="images/percha-desgastador.jpg" alt="Percha palo desgastador (2x20 cm)">
-  <h4>Percha palo desgastador (2x20 cm)</h4>
-  <p>$9.000</p>
-  <button onclick="agregarAlCarrito('Percha palo desgastador (2x20 cm)', 9000)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="aves">
-  <img src="images/arnes-aves.jpg" alt="Arnés para aves pequeñas">
-  <h4>Arnés para aves pequeñas</h4>
-  <p>$18.000</p>
-  <button onclick="agregarAlCarrito('Arnés para aves pequeñas', 18000)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="aves">
-  <img src="images/arenilla-calcificante.jpg" alt="Arenilla Calcificante (100 g)">
-  <h4>Arenilla Calcificante (100 g)</h4>
-  <p>$4.600</p>
-  <button onclick="agregarAlCarrito('Arenilla Calcificante (100 g)', 4600)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="aves">
-  <img src="images/cantaxantin-canto.jpg" alt="Cantaxantin Canto (150 g)">
-  <h4>Cantaxantin Canto (150 g)</h4>
-  <p>$4.900</p>
-  <button onclick="agregarAlCarrito('Cantaxantin Canto (150 g)', 4900)">Agregar al carrito</button>
-</div>
-
-    <!-- 🐟 Productos para Peces -->
-     
-    <h3 id="peces">🐟 Productos para Peces</h3>
-    <div class="producto" data-categoria="peces">
-  <img src="images/tetra-min-granulado.jpg" alt="Tetra Min Granulado 100g">
-  <h4>Tetra Min Granulado 100g</h4>
-  <p>$53.900</p>
-  <button onclick="agregarAlCarrito('Tetra Min Granulado 100g', 53900)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="peces">
-  <img src="images/tetra-tropical-flakes.jpg" alt="Tetra Tropical Flakes 12g">
-  <h4>Tetra Tropical Flakes 12g</h4>
-  <p>$14.900</p>
-  <button onclick="agregarAlCarrito('Tetra Tropical Flakes 12g', 14900)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="peces">
-  <img src="images/tetra-glofish-flakes.jpg" alt="Tetra Glofish Flakes 3g">
-  <h4>Tetra Glofish Flakes 3g</h4>
-  <p>$4.200</p>
-  <button onclick="agregarAlCarrito('Tetra Glofish Flakes 3g', 4200)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="peces">
-  <img src="images/filtro-interno-minjang.jpg" alt="Filtro Interno Minjang NS F801 (800L)">
-  <h4>Filtro Interno Minjang NS F801 (800L)</h4>
-  <p>$62.900</p>
-  <button onclick="agregarAlCarrito('Filtro Interno Minjang NS F801 (800L)', 62900)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="peces">
-  <img src="images/filtro-cascada-petworld.jpg" alt="Filtro Cascada Petworld 700 (65 GPH)">
-  <h4>Filtro Cascada Petworld 700 (65 GPH)</h4>
-  <p>$584.650</p>
-  <button onclick="agregarAlCarrito('Filtro Cascada Petworld 700 (65 GPH)', 584650)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="peces">
-  <img src="images/bomba-agua-dulce.jpg" alt="Bomba de Agua Dulce Petworld 300L">
-  <h4>Bomba de Agua Dulce Petworld 300L</h4>
-  <p>$40.900</p>
-  <button onclick="agregarAlCarrito('Bomba de Agua Dulce Petworld 300L', 40900)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="peces">
-  <img src="images/termometro-flotante.jpg" alt="Termómetro Flotante Petworld">
-  <h4>Termómetro Flotante Petworld</h4>
-  <p>$15.900</p>
-  <button onclick="agregarAlCarrito('Termómetro Flotante Petworld', 15900)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="peces">
-  <img src="images/iman-limpiavidrios.jpg" alt="Imán Limpiavidrios Pet Brand (Tamaño L)">
-  <h4>Imán Limpiavidrios Pet Brand (Tamaño L)</h4>
-  <p>$86.900</p>
-  <button onclick="agregarAlCarrito('Imán Limpiavidrios Pet Brand (Tamaño L)', 86900)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="peces">
-  <img src="images/iman-limpiavidrios.jpg" alt="Imán Limpiavidrios Pet Brand (Tamaño L)">
-  <h4>Imán Limpiavidrios Pet Brand (Tamaño L)</h4>
-  <p>$86.900</p>
-  <button onclick="agregarAlCarrito('Imán Limpiavidrios Pet Brand (Tamaño L)', 86900)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="peces">
-  <img src="images/gravilla-decorativa.jpg" alt="Gravilla Decorativa Petworld 1kg">
-  <h4>Gravilla Decorativa Petworld 1kg</h4>
-  <p>$7.900</p>
-  <button onclick="agregarAlCarrito('Gravilla Decorativa Petworld 1kg', 7900)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="peces">
-  <img src="images/betera-sencilla.jpg" alt="Betera Sencilla con Planta y Gravilla">
-  <h4>Betera Sencilla con Planta y Gravilla</h4>
-  <p>$45.900</p>
-  <button onclick="agregarAlCarrito('Betera Sencilla con Planta y Gravilla', 45900)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="peces">
-  <img src="images/betera-doble.jpg" alt="Betera Doble con Planta y Gravilla">
-  <h4>Betera Doble con Planta y Gravilla</h4>
-  <p>$71.900</p>
-  <button onclick="agregarAlCarrito('Betera Doble con Planta y Gravilla', 71900)">Agregar al carrito</button>
-</div>
-
-    <div class="producto">
-      <img src="images/filtro-agua.jpg" alt="Filtro de agua para peces">
-      <h4>Filtro de agua para peces</h4>
-      <p>$77.000</p>
-      <button onclick="agregarAlCarrito('Filtro de agua para peces', 28000)">Agregar al carrito</button>
-    </div>
-
-    <div class="producto">
-      <img src="images/acuario-mediano.jpg" alt="Acuario mediano">
-      <h4>Acuario mediano</h4>
-      <p>$85.000</p>
-      <button onclick="agregarAlCarrito('Acuario mediano', 85000)">Agregar al carrito</button>
-    </div>
-
-<!-- SLIDER  -->
-<section class="hero-slider">
-  <div class="slide active">
-    <img src="images/slide1.jpg" alt="Perro feliz">
-    <div class="texto-slide">
-      <h2>El mejor alimento para tu mascota</h2>
-      <p>Nutrición y calidad para que siempre estén sanos y felices</p>
-      <a href="#productos" class="btn-comprar">Comprar ahora</a>
-    </div>
-  </div>
-
-  <div class="slide">
-    <img src="images/slide2.jpg" alt="Gato adorable">
-    <div class="texto-slide">
-      <h2>Consiente a tu gato</h2>
-      <p>Rascadores, camas y juguetes que amará</p>
-      <a href="#productos" class="btn-comprar">Comprar ahora</a>
-    </div>
-  </div>
-
-  <div class="slide">
-    <img src="images/slide3.jpg" alt="Accesorios de mascotas">
-    <div class="texto-slide">
-      <h2>Accesorios únicos</h2>
-      <p>Todo lo que tu mascota necesita en un solo lugar</p>
-      <a href="#productos" class="btn-comprar">Comprar ahora</a>
-    </div>
-  </div>
-
-  <!-- Botones navegación -->
-  <button class="prev">❮</button>
-  <button class="next">❯</button>
-</section>
-
-<!-- QUIÉNES SOMOS -->
-
-<section class="quienes-somos">
-  <div class="contenedor-quienes">
-    <div class="texto-quienes">
-      <h2>¿Quiénes somos?</h2>
-      <p>
-        En <span class="marca">Huellas de Amor</span> creemos que cada mascota merece amor, cuidado y alegría.  
-        Nuestro compromiso es ofrecer productos que abracen su bienestar 🐾 y atención que acaricie el corazón ❤️.
-      </p>
-      <div class="frase-destacada">
-        “Cada huella deja amor, cada cliente es familia.” 🧡
-      </div>
-      <ul class="lista-valores">
-        <li>🐾 Productos pensados con cariño.</li>
-        <li>🐾 Atención personalizada y cercana.</li>
-        <li>🐾 Comunidad que comparte amor por los animales.</li>
-      </ul>
-      <a href="#productos" class="btn-descubre">Descubre más</a>
-    </div>
-
-    <div class="imagen-quienes">
-      <img src="images/mascota-abrazada.png" alt="Mascota feliz con su dueño">
-    </div>
-  </div>
-  
-</section>
-
-
-  <!-- Productos para Gatos -->
-
-<section class="productos">
-  <h2>Productos para Gatos</h2>
-  <div class="contenedor-productos">
-
-    <div class="producto">
-      <img src="images/gato1.jpg" alt="Petizoos Rascador Flor Mediano Rojo">
-      <h4>Petizoos Rascador Flor Mediano Rojo</h4>
-      <p>$139.900</p>
-      <button onclick="agregarAlCarrito('Petizoos Rascador Flor Mediano Rojo', 139900)">Agregar al carrito</button>
-
-    </div>
-
-    <div class="producto">
-      <img src="images/gato2.jpg" alt="Gimnasio Árbol con Cama">
-      <h4>Gimnasio Árbol con Cama</h4>
-      <p>$127.200</p>
-      <button onclick="agregarAlCarrito('Gimnasio Árbol con Cama', 127200)">Agregar al carrito</button>
-
-    </div>
-
-    <div class="producto">
-      <img src="images/gato3.jpg" alt="Maos Gimnasio Rascador Mediano Beige">
-      <h4>Maos Gimnasio Rascador Mediano Beige</h4>
-      <p>$244.900</p>
-      <button onclick="agregarAlCarrito('Maos gimnasio Rascador Mediano Beige', 244900)">Agregar al carrito</button>
-
-    </div>
-    <div class="producto" data-categoria="gatos">
-  <img src="images/arenera-filter.jpg" alt="Arenera Filter Cat">
-  <h4>Arenera Filter Cat</h4>
-  <p>$101.500</p>
-  <button onclick="agregarAlCarrito('Arenera Filter Cat', 101500)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="gatos">
-  <img src="images/guante-pet.jpg" alt="Guante Pet Gloves">
-  <h4>Guante Pet Gloves</h4>
-  <p>$13.500</p>
-  <button onclick="agregarAlCarrito('Guante Pet Gloves', 13500)">Agregar al carrito</button>
-</div>
-
-<div class="producto" data-categoria="gatos">
-  <img src="images/cepillo-rubber.jpg" alt="Cepillo Rubber Brush Gato">
-  <h4>Cepillo Rubber Brush Gato</h4>
-  <p>$13.500</p>
-  <button onclick="agregarAlCarrito('Cepillo Rubber Brush Gato', 13500)">Agregar al carrito</button>
-</div>
-
-    <div class="producto">
-      <img src="images/gato4.jpg" alt="Rascador Cartón Corrugado con Catnip">
-      <h4>Rascador Cartón Corrugado con Catnip</h4>
-      <p>$20.330</p>
-      <button onclick="agregarAlCarrito('Rascador Cartón Corrugado con Catnip', 20330)">Agregar al carrito</button>
-    </div>
-
-    <div class="producto" data-categoria="gatos">
-  <img src="images/cepillo-soft.jpg" alt="Cepillo Plástico Soft Brush">
-  <h4>Cepillo Plástico Soft Brush</h4>
-  <p>$10.000</p>
-  <button onclick="agregarAlCarrito('Cepillo Plástico Soft Brush', 10000)">Agregar al carrito</button>
-</div>
-
-  </div>
-</section>
-  
-<!-- Panel lateral del carrito -->
-<div id="carrito-panel" class="carrito-panel">
-  <div class="carrito-header">
-    <h3>Tu Carrito</h3>
-    <button id="cerrarCarrito">✖</button>
-  </div>
-  <div id="carrito-items" class="carrito-items">
-    <p>Tu carrito está vacío</p>
-  </div>
-  <div class="carrito-footer">
-    <p>Total: $<span id="carrito-total">0</span></p>
-    <button class="finalizar-compra">Finalizar compra</button>
-  </div>
-</div>
-
-
-<footer class="footer">
-  <div class="footer-top">
-    <div class="footer-brand">
-      <h2>🐾 Huellas de Amor <span>Petshop</span></h2>
-      <p class="slogan">Donde cada huella deja amor ❤️</p>
-    </div>
-    <div class="footer-subscribe">
-      <h3>💌 Recibe mimos digitales</h3>
-      <form>
-        <input type="email" placeholder="Tu correo con amor" required>
-        <button type="submit">Suscribirme 🐾</button>
+  </section>
+
+  <!-- 🔹 Newsletter -->
+  <section class="newsletter">
+    <div class="container">
+      <h2>Suscríbete y recibe ofertas exclusivas</h2>
+      <form class="newsletter__form">
+        <input type="email" placeholder="Tu correo electrónico" required>
+        <button type="submit" class="btn btn--primary">Suscribirme</button>
       </form>
     </div>
-  </div>
+  </section>
 
-  <div class="footer-columns">
-    <div class="footer-col">
-      <h4>📋 Menú</h4>
-      <ul>
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#productos">Productos</a></li>
-        <li><a href="#quienes">¿Quiénes somos?</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h4>🐶 Categorías</h4>
-      <ul>
-        <li><a href="#">Perros</a></li>
-        <li><a href="#">Gatos</a></li>
-        <li><a href="#">Aves</a></li>
-        <li><a href="#">Peces</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-col">
-      <h4>📞 Contáctanos</h4>
-      <p>ventas@huellasdeamorpets.com</p>
-      <p>WhatsApp: +573160810117</p>
-      <p>Tel: +573128076150</p>
-      <p>🕒 Lun-Sáb: 8am - 8pm</p>
-      <p>🕒 Dom-Fest: 9am - 6pm</p>
-      <div class="social-icons">
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-whatsapp"></i></a>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="images/logo.svg" class="brand__logo" alt="Huellas de Amor">
+        <p>© 2025 Huellas de Amor. Todos los derechos reservados.</p>
+      </div>
+      <div class="footer__cols">
+        <div>
+          <h4>Atención</h4>
+          <p>WhatsApp: 3160810117</p>
+          <p>Teléfono: 3128076150</p>
+          <p>atencionalcliente_@huellasdeamorpets.com</p>
+        </div>
+        <div>
+          <h4>Horario</h4>
+          <p>Lun–Sáb: 8am–8pm<br>Dom–Fest: 9am–6pm</p>
+        </div>
+        <div>
+          <h4>Síguenos</h4>
+          <div class="social">
+            <a href="#"><i class="fa-brands fa-facebook"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
       </div>
     </div>
+  </footer>
 
-    <div class="footer-col">
-      <h4>💳 Métodos de pago</h4>
-      <div class="pagos">
-        <img src="..." alt="Visa">
-        <img src="..." alt="Mastercard">
-        <img src="..." alt="PSE">
-      </div>
+  <!-- 🔹 Panel lateral del carrito -->
+  <div id="carrito-panel" class="carrito-panel">
+    <div class="carrito-header">
+      <h3>🛒 Tu Carrito</h3>
+      <button id="cerrarCarrito">✖</button>
+    </div>
+    <div id="carrito-items" class="carrito-items">
+      <p>Tu carrito está vacío</p>
+    </div>
+    <div class="carrito-footer">
+      <p>Total: <span id="carrito-total">$0</span></p>
+      <button class="finalizar-compra">Finalizar compra</button>
     </div>
   </div>
 
-  <div class="footer-bottom">
-    <p>© 2025 <strong>Huellas de Amor Petshop</strong> — Con amor desde Colombia 🇨🇴</p>
-  </div>
-</footer>
-
-
-<button id="btn-arriba" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">
-🐾⬆ Volver arriba
-</button>
-
-<script>
-  const btnArriba = document.getElementById('btn-arriba');
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-      btnArriba.style.display = 'block';
-    } else {
-      btnArriba.style.display = 'none';
-    }
-  });
-</script>
-
-<script>
-// === Buscador general (simple) ===
-document.addEventListener('DOMContentLoaded', function () {
-  const buscador = document.getElementById('buscador');
-  if (!buscador) return; // por si acaso
-
-  buscador.addEventListener('keyup', function () {
-    const texto = this.value.toLowerCase().trim();
-    const productos = document.querySelectorAll('.producto'); // todas las tarjetas
-
-    productos.forEach(function (card) {
-      const contenido = card.innerText.toLowerCase();
-      // '' muestra con su display original; 'none' oculta
-      card.style.display = contenido.includes(texto) ? '' : 'none';
-    });
-  });
-});
-</script>
-
-<script src="script.js"></script>
-
-<button id="btn-arriba">↑</button>
-
-<div id="modalContacto" class="modal">
-  <div class="modal-contenido">
-    <span class="cerrar" onclick="cerrarModal('modalContacto')">&times;</span>
-    <h2>Contáctanos 🐾</h2>
-    <p>¿Tienes alguna duda o quieres compartir algo con nosotros?<br>Estamos aquí para escucharte con cariño 🧡</p>
-    <form>
-      <input type="text" placeholder="🐶 Tu nombre" required>
-      <input type="email" placeholder="📧 Tu correo" required>
-      <textarea placeholder="✍️ Tu mensaje" required></textarea>
-      <button type="submit" class="btn-principal">Enviar mi mensaje</button>
-    </form>
-  </div>
-</div>
-
+  <!-- Scripts -->
+  <script src="script.js"></script>
 </body>
 </html>

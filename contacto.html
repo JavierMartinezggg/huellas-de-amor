@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Contacto | Huellas de Amor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header -->
+<header class="topbar">
+  <div class="container topbar__inner">
+    <a class="brand" href="index.html">
+      <img src="images/logo.svg" alt="Huellas de Amor" class="brand__logo">
+      <span class="brand__name">Huellas de Amor</span>
+    </a>
+
+    <nav class="nav">
+      <a class="nav__link" href="index.html">Inicio</a>
+      <a class="nav__link" href="productos.html">Productos</a>
+      <a class="nav__link" href="blog.html">Blog</a>
+      <a class="nav__link" href="nosotros.html">Nosotros</a>
+      <a class="nav__link" href="contacto.html">Contacto</a>
+    </nav>
+  </div>
+</header>
+
+
+  <main class="container">
+    <h1>Contáctanos</h1>
+    <p>Estamos aquí para ayudarte y responder tus dudas. Escríbenos 🐾</p>
+
+    <form class="contact-form">
+      <label>Nombre</label>
+      <input type="text" required>
+      
+      <label>Email</label>
+      <input type="email" required>
+      
+      <label>Mensaje</label>
+      <textarea required></textarea>
+      
+      <button type="submit" class="btn btn--primary">Enviar</button>
+    </form>
+  </main>
+
+  <!-- Footer -->
+<footer class="footer">
+  <div class="container footer__inner">
+    
+    <!-- Marca y lema -->
+    <div class="footer__brand">
+      <img src="images/logo.svg" class="brand__logo" alt="Huellas de Amor">
+      <p class="footer__slogan">“Gracias por dejar huellas de amor en la vida de tus mascotas.”</p>
+      <p>© 2025 Huellas de Amor. Todos los derechos reservados.</p>
+    </div>
+
+    <!-- Columnas -->
+    <div class="footer__cols">
+      
+      <!-- Contacto -->
+      <div>
+        <h4>Atención al cliente</h4>
+        <p><i class="fa-solid fa-location-dot"></i> Calle 123 #45-67, Bogotá</p>
+        <p><i class="fa-brands fa-whatsapp"></i> WhatsApp: 3160810117</p>
+        <p><i class="fa-solid fa-phone"></i> Teléfono: 3128076150</p>
+        <p><i class="fa-solid fa-envelope"></i> atencionalcliente@huellasdeamorpets.com</p>
+        <p><i class="fa-solid fa-clock"></i> Lun–Sáb: 8am–8pm / Dom–Fest: 9am–6pm</p>
+      </div>
+
+      <!-- Enlaces rápidos -->
+      <div>
+        <h4>Enlaces rápidos</h4>
+        <ul class="footer__links">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="productos.html">Productos</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="nosotros.html">Sobre nosotros</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Categorías -->
+      <div>
+        <h4>Categorías</h4>
+        <ul class="footer__links">
+          <li><a href="#" onclick="activarCategoria('perros')">Perros</a></li>
+          <li><a href="#" onclick="activarCategoria('gatos')">Gatos</a></li>
+          <li><a href="#" onclick="activarCategoria('aves')">Aves</a></li>
+          <li><a href="#" onclick="activarCategoria('peces')">Peces</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter -->
+      <div>
+        <h4>Suscríbete</h4>
+        <p>Recibe consejos, novedades y amor directo a tu bandeja de entrada 🐾</p>
+        <form class="newsletter__form">
+          <input type="email" placeholder="Tu correo electrónico" required>
+          <button type="submit" class="btn btn--primary">Suscribirme</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Línea inferior -->
+  <div class="footer__bottom">
+    <div class="social">
+      <a href="#"><i class="fa-brands fa-facebook"></i></a>
+      <a href="#"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+    </div>
+    <div class="footer__policies">
+      <a href="#">Términos y condiciones</a>
+      <a href="#">Política de privacidad</a>
+      <a href="#">Envíos y devoluciones</a>
+    </div>
+    <div class="payments">
+      <img src="images/pay-visa.png" alt="Visa">
+      <img src="images/pay-mastercard.png" alt="MasterCard">
+      <img src="images/pay-pse.png" alt="PSE">
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

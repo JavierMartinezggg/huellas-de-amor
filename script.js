@@ -1,4 +1,15 @@
 document.addEventListener('DOMContentLoaded', () => {
+  
+// -------------------- CATEGORÍAS EN FOOTER --------------------
+  document.querySelectorAll('.footer-cat').forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const cat = link.dataset.cat;
+      activarCategoria(cat);       // activa la categoría
+      catalogo.hidden = false;     // muestra el catálogo
+      catalogo.scrollIntoView({ behavior: 'smooth' }); // baja hasta catálogo
+    });
+  });
 
   // -------------------- Datos base (demo) --------------------
   const DATA = [
@@ -6,19 +17,23 @@ document.addEventListener('DOMContentLoaded', () => {
     {id:2, cat:'perros', nombre:'Juguete Pelota Interactiva', precio:35000, img:'images/prod/perro-juguete1.png', tags:'juguete interactivo perro pelota'},
     {id:3, cat:'perros', nombre:'Shampoo Piel Sensible', precio:26000, img:'images/prod/perro-shampoo.png', tags:'higiene shampoo perro piel sensible'},
     {id:4, cat:'perros', nombre:'Collar Ajustable Nylon', precio:18000, img:'images/prod/perro-collar.png', tags:'accesorios collar perro nylon'},
-
     {id:11, cat:'gatos', nombre:'Arena Aglomerante 10kg', precio:52000, img:'images/prod/gato-arena.png', tags:'arena gatos higiene'},
     {id:12, cat:'gatos', nombre:'Rascador Deluxe', precio:99000, img:'images/prod/gato-rascador.png', tags:'rascador gatos juego'},
     {id:13, cat:'gatos', nombre:'Alimento Húmedo Pack x12', precio:68000, img:'images/prod/gato-humedo.png', tags:'alimento humedo gatos'},
     {id:14, cat:'gatos', nombre:'Fuente de Agua', precio:115000, img:'images/prod/gato-fuente.png', tags:'fuente agua gatos bowl'},
-
     {id:21, cat:'aves', nombre:'Mezcla Semillas Canarios', precio:21000, img:'images/prod/ave-semillas.png', tags:'semillas alimento aves'},
     {id:22, cat:'aves', nombre:'Jaula Mediana', precio:149000, img:'images/prod/ave-jaula.png', tags:'jaula aves perchas'},
     {id:23, cat:'aves', nombre:'Bebedero Antiderrame', precio:16000, img:'images/prod/ave-bebedero.png', tags:'bebedero aves comedero'},
-
     {id:31, cat:'peces', nombre:'Acuario 40L con Luz LED', precio:329000, img:'images/prod/pez-acuario.png', tags:'acuario peces iluminacion'},
     {id:32, cat:'peces', nombre:'Filtro Interno 600L/h', precio:78000, img:'images/prod/pez-filtro.png', tags:'filtro peces bomba'},
-    {id:33, cat:'peces', nombre:'Acondicionador Anticloro', precio:19000, img:'images/prod/pez-anticloro.png', tags:'anticloro acondicionador peces'}
+    {id:33, cat:'peces', nombre:'Acondicionador Anticloro', precio:19000, img:'images/prod/pez-anticloro.png', tags:'anticloro acondicionador peces'},
+    // 🔹 OFERTAS ESPECIALES
+    {id:101, cat:'perros', nombre:'Alimento Premium Perros', precio:42390, img:'images/producto1.png', tags:'alimento perro oferta descuento'},
+    {id:102, cat:'gatos', nombre:'Snack Natural Gatos', precio:12500, img:'images/producto2.png', tags:'snack gatos oferta descuento'},
+    {id:103, cat:'perros', nombre:'Juguete interactivo', precio:18000, img:'images/producto3.png', tags:'juguete perro oferta descuento'},
+    {id:104, cat:'perros', nombre:'Accesorio', precio:8900, img:'images/producto4.png', tags:'accesorio perro oferta descuento'},
+    {id:105, cat:'peces', nombre:'Alimento Peces', precio:7200, img:'images/producto5.png', tags:'alimento peces oferta descuento'},
+    {id:106, cat:'aves', nombre:'Jaula para aves', precio:59000, img:'images/producto6.png', tags:'jaula aves oferta descuento'}
   ];
 
   const DESTACADOS = [DATA[0], DATA[11], DATA[22], DATA[31]];
@@ -34,6 +49,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const contadorRes    = $('#contadorResultados');
   const buscador       = $('#buscador');
   const contadorCart   = $('#carrito-contador');
+  const panelCarrito   = $('#carrito-panel');
+  const btnCarrito     = $('#btnCarrito');
+  const cerrarCarrito  = $('#cerrarCarrito');
+  const contenedorCarrito = $('#carrito-items');
+  const totalCarrito   = $('#carrito-total');
+  const carrusel       = $('#carruselRecomendados');
 
   let carrito = [];
   let categoriaActiva = null;
@@ -66,21 +87,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // -------------------- Categorías --------------------
   function activarCategoria(cat) {
-    // marcarestilos
     $$('.nav__link').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
     $$('.cat-card').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
     categoriaActiva = cat;
 
     const lista = (cat === 'todos') ? DATA.slice() : DATA.filter(p => p.cat === cat);
     renderProductos(lista, cat === 'todos' ? 'Todos los productos' : `Productos para ${cat}`);
-    document.getElementById('catalogo')?.scrollIntoView({behavior:'smooth'});
+    catalogo?.scrollIntoView({behavior:'smooth'});
   }
 
   $$('.nav__link').forEach(b => b.addEventListener('click', () => activarCategoria(b.dataset.cat)));
   $$('.cat-card').forEach(b => b.addEventListener('click', () => activarCategoria(b.dataset.cat)));
 
-  // -------------------- MAPEOS SUBCATEGORÍAS --------------------
-  // Si la subcat es una lista específica, usamos SUBCATS (IDs).
+  // -------------------- Subcategorías --------------------
   const SUBCATS = {
     "alimento-perro": [1],
     "alimento-gatos": [13],
@@ -94,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
     "combos": [1, 11, 31]
   };
 
-  // Si la subcat representa simplemente una categoría principal
   const MAP_SUBCAT = {
     "alimento-perro": "perros",
     "alimento-gatos": "gatos",
@@ -108,8 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
     "combos": "peces"
   };
 
-  // Handler robusto para subcategorías: primero intenta SUBCATS (IDs),
-  // si no hay IDs, cae a MAP_SUBCAT (categoria completa).
   $$('.subcat-card').forEach(btn => {
     btn.addEventListener('click', () => {
       const subcat = btn.dataset.cat;
@@ -119,20 +135,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const productosFiltrados = DATA.filter(p => ids.includes(p.id));
         renderProductos(productosFiltrados, btn.textContent.trim());
       } else {
-        // fallback a categoria completa
         const catReal = MAP_SUBCAT[subcat];
         if (catReal) activarCategoria(catReal);
         else {
-          // si no hay mapeo: mostrar mensaje "no hay productos"
           gridProductos.innerHTML = `<p class="no-productos">🚫 No hay productos en esta subcategoría</p>`;
-          document.getElementById('contadorResultados').textContent = "0 productos";
+          contadorRes.textContent = "0 productos";
           catalogo.hidden = false;
         }
       }
-      // mostrar catálogo + scroll
       catalogo.hidden = false;
-      document.getElementById('tituloCatalogo').textContent = btn.textContent.trim();
-      document.getElementById('catalogo').scrollIntoView({behavior:'smooth'});
+      tituloCatalogo.textContent = btn.textContent.trim();
+      catalogo.scrollIntoView({behavior:'smooth'});
     });
   });
 
@@ -148,19 +161,13 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProductos(lista, `Resultados para “${q}”`);
   });
 
-  // -------------------- Carrito (pro) --------------------
-  const panelCarrito = $('#carrito-panel');
-  const btnCarrito = $('#btnCarrito');
-  const cerrarCarrito = $('#cerrarCarrito');
-  const contenedorCarrito = $('#carrito-items');
-  const totalCarrito = $('#carrito-total');
-
+  // -------------------- Carrito --------------------
   function renderCarrito(){
     if (!contenedorCarrito) return;
     if (carrito.length === 0){
       contenedorCarrito.innerHTML = `<p>Tu carrito está vacío</p>`;
-      if (totalCarrito) totalCarrito.textContent = "$0";
-      if (contadorCart) contadorCart.textContent = "0";
+      totalCarrito.textContent = "$0";
+      contadorCart.textContent = "0";
       return;
     }
     let total = 0;
@@ -175,11 +182,10 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       `;
     }).join('');
-    if (totalCarrito) totalCarrito.textContent = fmt(total);
-    if (contadorCart) contadorCart.textContent = carrito.length;
+    totalCarrito.textContent = fmt(total);
+    contadorCart.textContent = carrito.length;
   }
 
-  // Delegación: escuchar los botones "Agregar" y "Quitar" en un solo listener
   document.addEventListener('click', e => {
     const add = e.target.closest('[data-add]');
     if (add) {
@@ -200,7 +206,6 @@ document.addEventListener('DOMContentLoaded', () => {
         carrito.splice(i,1);
         renderCarrito();
       }
-      return;
     }
   });
 
@@ -224,31 +229,35 @@ document.addEventListener('DOMContentLoaded', () => {
   $('#next')?.addEventListener('click', ()=>go(idx+1));
   setInterval(()=>go(idx+1), 6000);
 
-  // -------------------- Oferta Flash (contador) --------------------
-  function iniciarContador(duracionSegundos) {
-    const contador = document.getElementById('contador');
-    if (!contador) return;
-    let tiempo = duracionSegundos;
-    function actualizar() {
-      const horas = Math.floor(tiempo / 3600);
-      const minutos = Math.floor((tiempo % 3600) / 60);
-      const segundos = tiempo % 60;
-      contador.textContent = `${horas}h ${minutos}m ${segundos}s`;
-      if (tiempo > 0) tiempo--; else clearInterval(timer);
-    }
-    actualizar();
-    const timer = setInterval(actualizar, 1000);
-  }
-  iniciarContador(7200);
+  // -------------------- Botones del slider --------------------
+  $$('.hero__content .btn').forEach(boton => {
+    boton.addEventListener('click', e => {
+      e.preventDefault();
+      const categoria = boton.dataset.cat;
+      activarCategoria(categoria);
+      catalogo.hidden = false;
+      catalogo.scrollIntoView({behavior:'smooth'});
+    });
+  });
 
-  // -------------------- Recomendados (carrusel) --------------------
-  const carrusel = $('#carruselRecomendados');
+  // -------------------- Recomendados --------------------
   if (carrusel) {
     const randoms = DATA.slice().sort(() => 0.5 - Math.random()).slice(0,6);
     carrusel.innerHTML = randoms.map(cardHTML).join('');
   }
 
-  // Newsletter
+  const btnPrev = $('#btnPrev');
+  const btnNext = $('#btnNext');
+  if (carrusel && btnPrev && btnNext) {
+    btnNext.addEventListener('click', () => {
+      carrusel.scrollBy({ left: 220, behavior: "smooth" });
+    });
+    btnPrev.addEventListener('click', () => {
+      carrusel.scrollBy({ left: -220, behavior: "smooth" });
+    });
+  }
+
+  // -------------------- Newsletter --------------------
   document.querySelector('.newsletter__form')?.addEventListener('submit', e => {
     e.preventDefault();
     alert('¡Gracias por suscribirte! 🎉');
@@ -258,17 +267,103 @@ document.addEventListener('DOMContentLoaded', () => {
   // Init
   renderDestacados();
 });
-// === Carrusel SOLO con flechas ===
-const carrusel = document.getElementById("carruselRecomendados");
-const btnPrev = document.getElementById("btnPrev");
-const btnNext = document.getElementById("btnNext");
+// 🔹 MEJORAS DE INTERACCIÓN - HUELLAS DE AMOR 🔹
 
-if (carrusel && btnPrev && btnNext) {
-  btnNext.addEventListener("click", () => {
-    carrusel.scrollBy({ left: 220, behavior: "smooth" });
-  });
+// 1. Mejora en la adición al carrito
+document.addEventListener('click', (e) => {
+  const add = e.target.closest('[data-add]');
+  if (add) {
+    const id = Number(add.getAttribute('data-add'));
+    const prod = DATA.find(p => p.id === id);
+    if (!prod) return;
+    
+    carrito.push(prod);
+    renderCarrito();
+     
 
-  btnPrev.addEventListener("click", () => {
-    carrusel.scrollBy({ left: -220, behavior: "smooth" });
+    // Animación de confirmación
+    add.classList.add('added');
+    add.textContent = '✓ Añadido';
+    
+    // Animación del contador
+    contadorCart.classList.add('added');
+    setTimeout(() => {
+      contadorCart.classList.remove('added');
+    }, 500);
+    
+    setTimeout(() => {
+      add.classList.remove('added');
+      add.textContent = 'Agregar';
+    }, 1500);
+    
+    return;
+  }
+});
+
+// 2. Carga perezosa de imágenes
+document.addEventListener('DOMContentLoaded', function() {
+  const lazyImages = [].slice.call(document.querySelectorAll('img'));
+  
+  if ('IntersectionObserver' in window) {
+    const lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          const lazyImage = entry.target;
+          lazyImage.src = lazyImage.dataset.src || lazyImage.src;
+          lazyImage.classList.add('lazy-loaded');
+          lazyImageObserver.unobserve(lazyImage);
+        }
+      });
+    });
+    
+    lazyImages.forEach(function(lazyImage) {
+      lazyImageObserver.observe(lazyImage);
+    });
+  }
+});
+
+// 3. Mejora en el desplazamiento suave
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
   });
-}
+});
+
+// 4. Mejor feedback en formularios
+document.querySelectorAll('form').forEach(form => {
+  form.addEventListener('submit', function(e) {
+    const submitBtn = this.querySelector('button[type="submit"]');
+    if (submitBtn) {
+      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Procesando...';
+      submitBtn.disabled = true;
+    }
+  });
+});
+// === MENU HAMBURGUESA ===
+const navToggle = document.getElementById("navToggle");
+const nav = document.querySelector(".nav");
+
+navToggle.addEventListener("click", () => {
+  nav.classList.toggle("active");
+
+  // accesibilidad
+  const expanded = navToggle.getAttribute("aria-expanded") === "true" || false;
+  navToggle.setAttribute("aria-expanded", !expanded);
+});
+// Cerrar menú al hacer clic en un enlace
+document.querySelectorAll(".nav__link").forEach(link => {
+  link.addEventListener("click", () => {
+    nav.classList.remove("active");
+    navToggle.setAttribute("aria-expanded", false);
+  });
+});
+
+
+

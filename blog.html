@@ -1,129 +1,168 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Blog | Huellas de Amor</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Blog Huellas de Amor Petshop - Consejos, tips y artículos para el cuidado de tus mascotas.">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <!-- Header -->
-<header class="topbar">
-  <div class="container topbar__inner">
-    <a class="brand" href="index.html">
-      <img src="images/logo.svg" alt="Huellas de Amor" class="brand__logo">
-      <span class="brand__name">Huellas de Amor</span>
-    </a>
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="index.html">
+        <img src="images/logo.svg" alt="Huellas de Amor" class="brand__logo">
+        <span class="brand__name">Huellas de Amor</span>
+      </a>
 
-    <nav class="nav">
-      <a class="nav__link" href="index.html">Inicio</a>
-      <a class="nav__link" href="productos.html">Productos</a>
-      <a class="nav__link" href="blog.html">Blog</a>
-      <a class="nav__link" href="nosotros.html">Nosotros</a>
-      <a class="nav__link" href="contacto.html">Contacto</a>
-    </nav>
-  </div>
-</header>
+      <nav class="nav">
+        <a class="nav__link" href="index.html">Inicio</a>
+        <a class="nav__link" href="productos.html">Productos</a>
+        <a class="nav__link active" href="blog.html">Blog</a>
+        <a class="nav__link" href="nosotros.html">Nosotros</a>
+        <a class="nav__link" href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
 
+  <!-- Hero Blog -->
+  <section class="blog-hero">
+    <div class="container">
+      <h1>🐾 Bienvenido a nuestro Blog</h1>
+      <p>Consejos, tips y novedades para cuidar a tus mascotas con amor ❤️</p>
+      <input type="text" id="busquedaBlog" placeholder="🔎 Buscar artículos..." />
+    </div>
+  </section>
 
-  <main class="container">
-    <h1>Blog</h1>
-    <p>Consejos, tips y artículos para el cuidado de tus mascotas 🐶🐱🐦🐠</p>
+  <!-- Filtros -->
+  <section class="blog-filtros container">
+    <button data-cat="todos" class="active">Todos</button>
+    <button data-cat="perros">Perros</button>
+    <button data-cat="gatos">Gatos</button>
+    <button data-cat="aves">Aves</button>
+    <button data-cat="peces">Peces</button>
+  </section>
 
-    <article class="blog-post">
-      <h2>Cómo elegir el mejor alimento para tu perro</h2>
-      <p><small>Publicado el 31 de agosto 2025</small></p>
-      <p>Elegir el alimento correcto es clave para la salud de tu peludo. Aquí te contamos lo más importante...</p>
-      <a href="#">Leer más</a>
+  <!-- Grid de Artículos -->
+  <main class="container blog-grid">
+
+    <!-- 🐶 Perros -->
+    <article class="blog-card" data-cat="perros">
+      <img src="images/blog-perro.jpg" alt="Alimento para perros" loading="lazy">
+      <div class="blog-card-body">
+        <span class="blog-date">31 ago 2025</span>
+        <h2>Cómo elegir el mejor alimento para tu perro</h2>
+        <p>La alimentación es clave para la salud de tu peludo. Aprende qué mirar en las etiquetas y cómo escoger la mejor opción...</p>
+        <a href="#" class="btn-read">Leer más</a>
+      </div>
     </article>
 
-    <article class="blog-post">
-      <h2>5 consejos para mantener limpio el acuario</h2>
-      <p><small>Publicado el 28 de agosto 2025</small></p>
-      <p>Un acuario limpio asegura la vida de tus peces. Descubre los pasos básicos para mantenerlo en perfecto estado...</p>
-      <a href="#">Leer más</a>
+    <article class="blog-card" data-cat="perros">
+      <img src="images/blog-perro-juego.jpg" alt="Ejercicio para perros" loading="lazy">
+      <div class="blog-card-body">
+        <span class="blog-date">20 ago 2025</span>
+        <h2>5 juegos divertidos para tu perro</h2>
+        <p>Mantén a tu perro activo y feliz con actividades simples que fortalecen su vínculo contigo...</p>
+        <a href="#" class="btn-read">Leer más</a>
+      </div>
     </article>
+
+    <!-- 🐱 Gatos -->
+    <article class="blog-card" data-cat="gatos">
+      <img src="images/blog-gato.jpg" alt="Salud dental de gatos" loading="lazy">
+      <div class="blog-card-body">
+        <span class="blog-date">25 ago 2025</span>
+        <h2>Cómo cuidar la salud dental de tu gato</h2>
+        <p>Los gatos también necesitan cuidados especiales en su boca 🐱. Descubre tips sencillos para mantener su salud dental perfecta...</p>
+        <a href="#" class="btn-read">Leer más</a>
+      </div>
+    </article>
+
+    <article class="blog-card" data-cat="gatos">
+      <img src="images/blog-gato-juego.jpg" alt="Juguetes para gatos" loading="lazy">
+      <div class="blog-card-body">
+        <span class="blog-date">18 ago 2025</span>
+        <h2>Los mejores juguetes para gatos activos</h2>
+        <p>Un gato entretenido es un gato feliz. Te mostramos juguetes que estimulan su instinto y lo mantienen en forma...</p>
+        <a href="#" class="btn-read">Leer más</a>
+      </div>
+    </article>
+
+    <!-- 🐦 Aves -->
+    <article class="blog-card" data-cat="aves">
+      <img src="images/blog-aves.jpg" alt="Cuidados aves" loading="lazy">
+      <div class="blog-card-body">
+        <span class="blog-date">15 ago 2025</span>
+        <h2>Cuidados esenciales para canarios y periquitos</h2>
+        <p>Las aves requieren un entorno limpio y nutritivo para mantenerse saludables. Aquí te contamos lo básico...</p>
+        <a href="#" class="btn-read">Leer más</a>
+      </div>
+    </article>
+
+    <!-- 🐠 Peces -->
+    <article class="blog-card" data-cat="peces">
+      <img src="images/blog-acuario.jpg" alt="Consejos acuario" loading="lazy">
+      <div class="blog-card-body">
+        <span class="blog-date">28 ago 2025</span>
+        <h2>5 consejos para mantener limpio el acuario</h2>
+        <p>Un acuario limpio asegura la vida de tus peces. Descubre los pasos básicos para mantenerlo en perfecto estado...</p>
+        <a href="#" class="btn-read">Leer más</a>
+      </div>
+    </article>
+
+    <article class="blog-card" data-cat="peces">
+      <img src="images/blog-peces.jpg" alt="Decoración de acuarios" loading="lazy">
+      <div class="blog-card-body">
+        <span class="blog-date">10 ago 2025</span>
+        <h2>Cómo decorar tu acuario sin afectar a tus peces</h2>
+        <p>La decoración de un acuario puede ser estética y segura si se eligen los elementos adecuados...</p>
+        <a href="#" class="btn-read">Leer más</a>
+      </div>
+    </article>
+
   </main>
 
   <!-- Footer -->
-<footer class="footer">
-  <div class="container footer__inner">
-    
-    <!-- Marca y lema -->
-    <div class="footer__brand">
-      <img src="images/logo.svg" class="brand__logo" alt="Huellas de Amor">
-      <p class="footer__slogan">“Gracias por dejar huellas de amor en la vida de tus mascotas.”</p>
-      <p>© 2025 Huellas de Amor. Todos los derechos reservados.</p>
-    </div>
-
-    <!-- Columnas -->
-    <div class="footer__cols">
-      
-      <!-- Contacto -->
-      <div>
-        <h4>Atención al cliente</h4>
-        <p><i class="fa-solid fa-location-dot"></i> Calle 123 #45-67, Bogotá</p>
-        <p><i class="fa-brands fa-whatsapp"></i> WhatsApp: 3160810117</p>
-        <p><i class="fa-solid fa-phone"></i> Teléfono: 3128076150</p>
-        <p><i class="fa-solid fa-envelope"></i> atencionalcliente@huellasdeamorpets.com</p>
-        <p><i class="fa-solid fa-clock"></i> Lun–Sáb: 8am–8pm / Dom–Fest: 9am–6pm</p>
-      </div>
-
-      <!-- Enlaces rápidos -->
-      <div>
-        <h4>Enlaces rápidos</h4>
-        <ul class="footer__links">
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="productos.html">Productos</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="nosotros.html">Sobre nosotros</a></li>
-          <li><a href="contacto.html">Contacto</a></li>
-        </ul>
-      </div>
-
-      <!-- Categorías -->
-      <div>
-        <h4>Categorías</h4>
-        <ul class="footer__links">
-          <li><a href="#" onclick="activarCategoria('perros')">Perros</a></li>
-          <li><a href="#" onclick="activarCategoria('gatos')">Gatos</a></li>
-          <li><a href="#" onclick="activarCategoria('aves')">Aves</a></li>
-          <li><a href="#" onclick="activarCategoria('peces')">Peces</a></li>
-        </ul>
-      </div>
-
-      <!-- Newsletter -->
-      <div>
-        <h4>Suscríbete</h4>
-        <p>Recibe consejos, novedades y amor directo a tu bandeja de entrada 🐾</p>
-        <form class="newsletter__form">
-          <input type="email" placeholder="Tu correo electrónico" required>
-          <button type="submit" class="btn btn--primary">Suscribirme</button>
-        </form>
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <img src="images/logo.svg" class="brand__logo" alt="Huellas de Amor" loading="lazy">
+        <p class="footer__slogan">“Gracias por dejar huellas de amor en la vida de tus mascotas.”</p>
+        <p>© 2025 Huellas de Amor. Todos los derechos reservados.</p>
       </div>
     </div>
-  </div>
+  </footer>
 
-  <!-- Línea inferior -->
-  <div class="footer__bottom">
-    <div class="social">
-      <a href="#"><i class="fa-brands fa-facebook"></i></a>
-      <a href="#"><i class="fa-brands fa-instagram"></i></a>
-      <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-    </div>
-    <div class="footer__policies">
-      <a href="#">Términos y condiciones</a>
-      <a href="#">Política de privacidad</a>
-      <a href="#">Envíos y devoluciones</a>
-    </div>
-    <div class="payments">
-      <img src="images/pay-visa.png" alt="Visa">
-      <img src="images/pay-mastercard.png" alt="MasterCard">
-      <img src="images/pay-pse.png" alt="PSE">
-    </div>
-  </div>
-</footer>
+  <!-- Scripts -->
+  <script>
+    // Filtro por categorías
+    const botones = document.querySelectorAll(".blog-filtros button");
+    const posts = document.querySelectorAll(".blog-card");
+    botones.forEach(boton => {
+      boton.addEventListener("click", () => {
+        botones.forEach(b => b.classList.remove("active"));
+        boton.classList.add("active");
+        const cat = boton.dataset.cat;
+        posts.forEach(post => {
+          post.style.display = (cat === "todos" || post.dataset.cat === cat) ? "block" : "none";
+        });
+      });
+    });
 
+    // Buscador
+    document.getElementById("busquedaBlog").addEventListener("input", e => {
+      const texto = e.target.value.toLowerCase();
+      posts.forEach(post => {
+        const contenido = post.innerText.toLowerCase();
+        post.style.display = contenido.includes(texto) ? "block" : "none";
+      });
+    });
+  </script>
 
 </body>
 </html>

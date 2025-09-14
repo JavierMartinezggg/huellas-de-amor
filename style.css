@@ -432,4 +432,1488 @@ img{max-width:100%;display:block}
   transform: scale(1.05);
 }
 
+/* Nombre producto */
+.oferta-card h3 {
+  font-size: 1rem;
+  margin: 10px 0;
+  font-weight: 600;
+  color: #333;
+}
 
+/* Precios */
+.precio {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #e63946;
+}
+
+.precio-antiguo {
+  font-size: .9rem;
+  text-decoration: line-through;
+  color: #777;
+  margin-left: 5px;
+}
+
+/* Botón */
+.btn-oferta {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 14px;
+  background: #ff5722;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background .3s ease;
+}
+
+.btn-oferta:hover {
+  background: #e64a19;
+}
+
+/* Badge descuento */
+.badge-descuento {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #e63946;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: bold;
+  padding: 5px 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  animation: pulse 1.5s infinite;
+}
+
+/* Animación para resaltar */
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.85; }
+  100% { transform: scale(1); opacity: 1; }
+}
+/* ================================
+   BLOG STYLES
+================================= */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin: 2rem auto;
+}
+
+.blog-grid h1 {
+  grid-column: 1/-1;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.blog-grid > p {
+  grid-column: 1/-1;
+  text-align: center;
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.blog-card {
+  background: #fff;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.blog-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform .4s ease;
+}
+
+.blog-card:hover img {
+  transform: scale(1.05);
+}
+
+.blog-card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.blog-date {
+  font-size: 0.9rem;
+  color: #ff5722;
+  margin-bottom: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+}
+
+.blog-card-body h2 {
+  font-size: 1.4rem;
+  margin-bottom: .8rem;
+  color: #222;
+  line-height: 1.3;
+}
+
+.blog-card-body p {
+  flex-grow: 1;
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.btn-read {
+  align-self: flex-start;
+  background: #ff5722;
+  color: #fff;
+  padding: .6rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background .3s ease;
+}
+
+.btn-read:hover {
+  background: #e64a19;
+}
+/* ======================
+   NOSOTROS
+====================== */
+
+/* Hero */
+.nosotros-hero {
+  background: url("images/nosotros-banner.jpg") center/cover no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: 6rem 1rem;
+  position: relative;
+}
+.nosotros-hero::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.45);
+}
+.nosotros-hero .container {
+  position: relative;
+  z-index: 2;
+}
+.nosotros-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.nosotros-hero p {
+  font-size: 1.2rem;
+}
+
+/* Historia */
+.nosotros-historia {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  margin: 4rem auto;
+}
+.nosotros-historia img {
+  width: 100%;
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+.nosotros-historia h2 {
+  margin-bottom: 1rem;
+  color: #ff5722;
+}
+
+/* Valores */
+.nosotros-valores {
+  background: #fafafa;
+  padding: 4rem 1rem;
+  text-align: center;
+}
+.valores-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.valor {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform .3s ease;
+}
+.valor:hover {
+  transform: translateY(-8px);
+}
+.valor i {
+  font-size: 2rem;
+  color: #ff5722;
+  margin-bottom: 1rem;
+}
+.valor h3 {
+  margin-bottom: .5rem;
+  font-size: 1.3rem;
+}
+
+/* Equipo */
+.nosotros-equipo {
+  text-align: center;
+  margin: 4rem auto;
+}
+.equipo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+.equipo-card {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform .3s ease;
+}
+.equipo-card:hover {
+  transform: translateY(-6px);
+}
+.equipo-card img {
+  width: 100%;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+.equipo-card h3 {
+  margin-bottom: .3rem;
+  color: #ff5722;
+}
+.equipo-card p {
+  color: #666;
+}
+/* ======================
+   CONTACTO
+====================== */
+
+.contacto-hero {
+  background: url("images/contacto-banner.jpg") center/cover no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: 5rem 1rem;
+  position: relative;
+}
+.contacto-hero::after {
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,0.45);
+}
+.contacto-hero .container {
+  position: relative;
+  z-index: 2;
+}
+.contacto-hero h1 {
+  font-size: 2.3rem;
+  margin-bottom: 1rem;
+}
+.contacto-hero p {
+  font-size: 1.2rem;
+}
+
+/* Grid */
+.contacto-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  margin: 4rem auto;
+}
+.contacto-form, .contacto-info {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.contacto-form h2, .contacto-info h2 {
+  margin-bottom: 1rem;
+  color: #ff5722;
+}
+
+/* Formulario */
+.form-group {
+  margin-bottom: 1rem;
+}
+.form-group label {
+  display: block;
+  margin-bottom: .3rem;
+  font-weight: 600;
+}
+.form-group input, .form-group textarea {
+  width: 100%;
+  padding: .7rem;
+  border: 1px solid #ccc;
+  border-radius: .5rem;
+  font-family: inherit;
+  font-size: 1rem;
+}
+.form-group input:focus, .form-group textarea:focus {
+  border-color: #ff5722;
+  outline: none;
+}
+
+/* Info */
+.contacto-info p {
+  margin-bottom: .8rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.contacto-info i {
+  color: #ff5722;
+}
+
+/* Mapa */
+.contacto-mapa iframe {
+  border-radius: 1rem;
+  margin: 2rem 0;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .contacto-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* ======================
+   PRODUCTOS
+====================== */
+
+.catalogo-page h1 {
+  margin-top: 2rem;
+  font-size: 2rem;
+  color: #ff5722;
+}
+
+.catalogo-bar {
+  margin: 2rem 0;
+  text-align: center;
+}
+.catalogo-bar input {
+  width: 100%;
+  max-width: 500px;
+  padding: .8rem;
+  border: 2px solid #ddd;
+  border-radius: 1rem;
+  font-size: 1rem;
+}
+.catalogo-bar input:focus {
+  border-color: #ff5722;
+  outline: none;
+}
+
+/* Grid productos */
+.grid-productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2rem;
+}
+.card {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  padding: 1rem;
+  text-align: center;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+.card__img img {
+  max-width: 100%;
+  height: 160px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+.card__title {
+  font-size: 1.1rem;
+  margin-bottom: .5rem;
+}
+.card__price {
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 1rem;
+}
+.card .btn {
+  background: #ff5722;
+  color: #fff;
+  padding: .6rem 1.2rem;
+  border: none;
+  border-radius: .5rem;
+  cursor: pointer;
+  transition: background .2s;
+}
+.card .btn:hover {
+  background: #e64a19;
+}
+/* Hero del catálogo */
+.hero-catalogo {
+  position: relative;
+  background: url("images/banner-pets.jpg") center/cover no-repeat;
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.hero-catalogo__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+}
+
+.hero-catalogo__content {
+  position: relative;
+  text-align: center;
+  z-index: 2;
+}
+
+.hero-catalogo__content h1 {
+  font-size: 2.5rem;
+  margin-bottom: .5rem;
+}
+
+.hero-catalogo__content p {
+  font-size: 1.2rem;
+}
+/* === USER MENU === */
+.user-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.user-icon {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 6px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+  color: #333;
+}
+
+.user-icon:hover {
+  background: #fff3e6; /* fondo suave naranja */
+  color: #ff6b35; /* naranja principal */
+  border-color: #ff6b35;
+}
+
+/* Dropdown */
+.user-dropdown {
+  position: absolute;
+  top: 110%; /* un poquito más abajo */
+  right: 0;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  min-width: 170px;
+  padding: 10px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.25s ease;
+  z-index: 1000;
+}
+
+.user-menu:hover .user-dropdown,
+.user-menu.active .user-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Links dentro del menú */
+.user-dropdown a {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  font-size: 14px;
+  color: #333;
+  text-decoration: none;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.user-dropdown a:hover {
+  background: #fff3e6; /* naranja suave */
+  color: #ff6b35; /* naranja fuerte */
+}
+/* =========================
+   FORMULARIOS LOGIN / REGISTER
+========================= */
+.form-container {
+  max-width: 420px;
+  margin: 5rem auto;
+  padding: 2.5rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.form-container h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.8rem;
+  color: #222;
+  text-align: center;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-container label {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #333;
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.form-container input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.form-container input:focus {
+  border-color: #ff6600;
+  box-shadow: 0 0 0 2px rgba(255,102,0,0.2);
+}
+
+.form-container .btn {
+  padding: 0.9rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.form-container .btn--primary {
+  background: #ff6600;
+  color: #fff;
+}
+
+.form-container .btn--primary:hover {
+  background: #e65c00;
+  transform: translateY(-2px);
+}
+
+.form-container p {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.form-container a {
+  color: #ff6600;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.form-container a:hover {
+  text-decoration: underline;
+}
+/* 🔹 MEJORAS VISUALES Y ANIMACIONES - HUELLASS DE AMOR 🔹 */
+
+/* 1. Animaciones de entrada suaves para las secciones */
+section {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 2. Mejoras en las tarjetas de productos */
+.card {
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.12), 0 10px 10px rgba(0,0,0,0.08);
+}
+
+/* 3. Efecto de zoom suave en imágenes de productos */
+.card__img {
+  overflow: hidden;
+}
+
+.card__img img {
+  transition: transform 0.5s ease;
+}
+
+.card:hover .card__img img {
+  transform: scale(1.08);
+}
+
+/* 4. Mejoras en botones con efecto de pulso */
+.btn--primary {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.btn--primary::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%);
+  transform-origin: 50% 50%;
+}
+
+.btn--primary:hover::after {
+  animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 1;
+  }
+  20% {
+    transform: scale(25, 25);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: scale(40, 40);
+  }
+}
+
+/* 5. Mejoras en el slider hero */
+.hero__slide {
+  transition: opacity 0.8s ease, transform 1s ease;
+}
+
+.hero__slide.active {
+  transform: scale(1.02);
+}
+
+/* 6. Efectos en las categorías */
+.cat-card, .subcat-card {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.cat-card:hover, .subcat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.cat-card::after, .subcat-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.cat-card:hover::after, .subcat-card:hover::after {
+  transform: scaleX(1);
+}
+
+/* 7. Mejoras en el carrusel de productos recomendados */
+.carrusel-wrapper {
+  position: relative;
+  padding: 0 40px;
+}
+
+.carrusel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(255, 106, 0, 0.8);
+  color: white;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  opacity: 0.7;
+}
+
+.carrusel-btn:hover {
+  opacity: 1;
+  background: var(--accent);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carrusel-btn.prev {
+  left: 0;
+}
+
+.carrusel-btn.next {
+  right: 0;
+}
+
+/* 8. Efectos de carga perezosa para imágenes */
+img {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+img.lazy-loaded {
+  opacity: 1;
+}
+
+/* 9. Mejoras en el formulario de newsletter */
+.newsletter__form input {
+  transition: all 0.3s;
+}
+
+.newsletter__form input:focus {
+  box-shadow: 0 0 0 3px rgba(255, 106, 0, 0.2);
+  border-color: var(--accent);
+}
+
+/* 10. Animación para el contador del carrito */
+#carrito-contador {
+  transition: all 0.3s;
+}
+
+#carrito-contador.added {
+  animation: pulse 0.5s;
+  background: #ff3333;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+/* 11. Mejora en la visualización de precios */
+.precio {
+  font-weight: bold;
+  color: var(--accent);
+  position: relative;
+  display: inline-block;
+}
+
+.precio-antiguo {
+  position: relative;
+}
+
+.precio-antiguo::before {
+  content: "";
+  position: absolute;
+  left: -5%;
+  top: 50%;
+  width: 110%;
+  height: 2px;
+  background: #ff3333;
+  transform: rotate(-5deg);
+}
+
+/* 12. Mejoras en el panel del carrito */
+.carrito-panel {
+  transition: right 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.carrito-item {
+  transition: all 0.3s;
+}
+
+.carrito-item:hover {
+  background-color: #f9f9f9;
+  transform: translateX(5px);
+}
+
+/* 13. Efectos de hover en los beneficios */
+.benefit {
+  transition: all 0.3s;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.benefit:hover {
+  background-color: rgba(255, 106, 0, 0.1);
+  transform: translateY(-3px);
+}
+
+/* 14. Mejoras en la barra de búsqueda */
+.search {
+  transition: all 0.3s;
+}
+
+.search:focus-within {
+  box-shadow: 0 0 0 3px rgba(255, 106, 0, 0.2);
+  border-color: var(--accent);
+}
+
+/* 15. Animación para elementos que se agregan al carrito */
+@keyframes addedToCart {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+.card .btn.added {
+  animation: addedToCart 0.5s;
+  background-color: #4caf50;
+}
+
+/* 16. Mejoras responsivas para móviles */
+@media (max-width: 680px) {
+  .hero__content h1 {
+    font-size: 28px;
+  }
+  
+  .hero__content p {
+    font-size: 16px;
+  }
+  
+  .section-title {
+    font-size: 22px;
+  }
+  
+  /* Mejora visual para el menú en móviles */
+  .nav {
+    overflow-x: auto;
+    padding-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .nav__link {
+    flex-shrink: 0;
+  }
+}
+
+/* 17. Optimizaciones de rendimiento */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* 18. Mejora de focus para accesibilidad */
+button:focus,
+input:focus,
+a:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* 19. Efecto de skeleton loading para imágenes */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* 20. Mejora visual para el footer */
+.footer__links li {
+  transition: transform 0.2s;
+}
+
+.footer__links li:hover {
+  transform: translateX(5px);
+}
+
+.footer__links a {
+  transition: color 0.2s;
+}
+
+.footer__links a:hover {
+  color: var(--accent);
+}
+/* ====== ESTILOS PÁGINAS LEGALES ====== */
+
+/* Contenedor general */
+.page-content {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  line-height: 1.7;
+  color: #333;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Título principal */
+.page-content h1 {
+  font-size: 2.2rem;
+  margin-bottom: 25px;
+  color: #2c3e50;
+  text-align: center;
+  font-weight: 700;
+  border-bottom: 2px solid #f39c12;
+  padding-bottom: 10px;
+}
+
+/* Subtítulos */
+.page-content h2 {
+  font-size: 1.5rem;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  color: #e67e22;
+  font-weight: 600;
+}
+
+/* Párrafos */
+.page-content p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  text-align: justify;
+}
+
+/* Links */
+.page-content a {
+  color: #2980b9;
+  text-decoration: underline;
+  transition: color 0.3s ease;
+}
+
+.page-content a:hover {
+  color: #1abc9c;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page-content {
+    margin: 20px 10px;
+    padding: 15px;
+  }
+
+  .page-content h1 {
+    font-size: 1.8rem;
+  }
+
+  .page-content h2 {
+    font-size: 1.3rem;
+  }
+
+  .page-content p {
+    font-size: 0.95rem;
+  }
+}
+/* ===== FOOTER ESTILOS ===== */
+
+.footer {
+  background: #222;
+  color: #eee;
+  padding: 40px 20px 20px;
+  font-size: 0.95rem;
+}
+
+.footer__inner {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer__brand {
+  text-align: center;
+}
+
+.footer__brand img {
+  width: 100px;
+  margin-bottom: 10px;
+}
+
+.footer__slogan {
+  font-style: italic;
+  color: #f39c12;
+  margin-bottom: 10px;
+}
+
+.footer__cols {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+.footer__cols h4 {
+  margin-bottom: 12px;
+  color: #f39c12;
+  font-size: 1.1rem;
+}
+
+.footer__links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer__links li {
+  margin-bottom: 8px;
+}
+
+.footer__links a {
+  color: #eee;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer__links a:hover {
+  color: #f39c12;
+}
+
+/* Parte inferior */
+.footer__bottom {
+  border-top: 1px solid #444;
+  margin-top: 30px;
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.footer__bottom .social a {
+  color: #eee;
+  margin-right: 12px;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.footer__bottom .social a:hover {
+  color: #f39c12;
+}
+
+.footer__policies a {
+  margin-right: 15px;
+  color: #eee;
+  text-decoration: none;
+}
+
+.footer__policies a:hover {
+  color: #f39c12;
+}
+
+.footer__bottom .payments img {
+  width: 50px;
+  margin-left: 8px;
+}
+
+/* 📱 Responsive */
+@media (max-width: 900px) {
+  .footer__inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer__cols {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer__cols {
+    grid-template-columns: 1fr;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer__bottom .payments img {
+    margin: 5px;
+  }
+}
+/* ============================
+   BLOG - HUELLAS DE AMOR
+   ============================ */
+
+/* Hero Blog */
+.blog-hero {
+  background: linear-gradient(135deg, #ff7e29, #ff4b2b);
+  color: #fff;
+  text-align: center;
+  padding: 3rem 1rem;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.blog-hero h1 {
+  font-size: 2.2rem;
+  margin-bottom: .5rem;
+}
+
+.blog-hero p {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.blog-hero input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1rem;
+  outline: none;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Botones de filtro */
+.blog-filtros {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.blog-filtros button {
+  background: #fff;
+  border: 2px solid #ff6600;
+  color: #333;
+  padding: .5rem 1.2rem;
+  margin: .3rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all .3s ease;
+}
+
+.blog-filtros button:hover {
+  background: #ff6600;
+  color: #fff;
+}
+
+.blog-filtros button.active {
+  background: #ff6600;
+  color: #fff;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+/* Grid de artículos */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* Tarjeta del blog */
+.blog-card {
+  background: #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.2);
+}
+
+.blog-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.blog-card-body {
+  padding: 1rem;
+}
+
+.blog-card-body h2 {
+  font-size: 1.3rem;
+  margin: .5rem 0;
+  color: #222;
+}
+
+.blog-card-body p {
+  font-size: .95rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.blog-date {
+  font-size: .85rem;
+  color: #ff6600;
+  font-weight: 600;
+}
+
+/* Botón Leer más */
+.btn-read {
+  display: inline-block;
+  margin-top: .8rem;
+  padding: .5rem 1rem;
+  background: #ff6600;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background .3s;
+}
+
+.btn-read:hover {
+  background: #e65500;
+}
+/* 🎨 Animaciones UX en botones */
+.btn, .btn--primary {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.btn:hover, .btn--primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  background: #ff7f50; /* Un naranja amigable */
+  color: #fff;
+}
+/* 🎨 Animaciones en tarjetas */
+.blog-card, .equipo-card, .producto-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.blog-card:hover, .equipo-card:hover, .producto-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+}
+
+.blog-card img, .equipo-card img, .producto-card img {
+  transition: transform 0.4s ease;
+}
+
+.blog-card:hover img, .equipo-card:hover img, .producto-card:hover img {
+  transform: scale(1.05);
+}
+.nav__link {
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav__link::after {
+  content: "";
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: #ff7f50;
+  transition: width 0.3s ease;
+}
+
+.nav__link:hover {
+  color: #ff7f50;
+}
+
+.nav__link:hover::after {
+  width: 100%;
+}
+/* === MENU HAMBURGUESA === */
+.nav-toggle {
+  display: none; /* oculto en PC */
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: block; /* visible en móvil */
+  }
+
+  .nav {
+    position: absolute;
+    top: 70px; /* debajo del header */
+    right: 0;
+    background: #fff;
+    flex-direction: column;
+    gap: 15px;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    display: none; /* oculto por defecto */
+    z-index: 999;
+  }
+
+  .nav.active {
+    display: flex; /* se muestra cuando está activo */
+  }
+}
+/* === Sección Ofertas (mismo estilo que recomendados) === */
+.ofertas {
+  margin: 60px auto;
+}
+
+.ofertas h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #222;
+}
+
+/* Grid igual que productos/recomendados */
+.ofertas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* Tarjeta de oferta con estilo unificado */
+.oferta-card {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.oferta-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* Imagen */
+.oferta-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+/* Títulos */
+.oferta-card h3 {
+  font-size: 1rem;
+  margin: 10px 0;
+  color: #333;
+}
+
+/* Precio */
+.precio {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #e63946;
+}
+
+.precio-antiguo {
+  text-decoration: line-through;
+  font-size: 0.85rem;
+  color: #777;
+  margin-left: 6px;
+}
+
+/* Badge descuento */
+.badge-descuento {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #ff3b3b;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 20px;
+}
+
+/* Botón */
+.btn-oferta {
+  background: #ff6600;
+  color: #fff;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: background 0.2s ease;
+}
+
+.btn-oferta:hover {
+  background: #e05200;
+}

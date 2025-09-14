@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Nosotros | Huellas de Amor</title>
-  <link rel="stylesheet" href="style.css">
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1">
+ <meta name="description" content="Huellas de Amor Petshop - Todo para tus mascotas: alimentos, accesorios, juguetes y más.">
+ <link rel="icon" type="image/png" href="images/favicon.png">
+
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+ <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -11,7 +16,7 @@
 <header class="topbar">
   <div class="container topbar__inner">
     <a class="brand" href="index.html">
-      <img src="images/logo.svg" alt="Huellas de Amor" class="brand__logo">
+      <img src="images/logo.svg" alt="Huellas de Amor" class="brand__logo" loading="lazy">
       <span class="brand__name">Huellas de Amor</span>
     </a>
 
@@ -19,46 +24,106 @@
       <a class="nav__link" href="index.html">Inicio</a>
       <a class="nav__link" href="productos.html">Productos</a>
       <a class="nav__link" href="blog.html">Blog</a>
-      <a class="nav__link" href="nosotros.html">Nosotros</a>
+      <a class="nav__link active" href="nosotros.html">Nosotros</a>
       <a class="nav__link" href="contacto.html">Contacto</a>
     </nav>
   </div>
 </header>
 
+<main class="nosotros">
 
-  <main class="container">
-    <h1>Sobre Nosotros</h1>
-    <p>En <b>Huellas de Amor</b> creemos que cada mascota merece lo mejor. Somos una tienda dedicada a ofrecer productos de calidad, con amor y cuidado.</p>
-    
-    <h2>Nuestra misión</h2>
-    <p>Brindar bienestar y felicidad a las mascotas y tranquilidad a sus dueños.</p>
+  <!-- Hero -->
+  <section class="nosotros-hero">
+    <div class="container">
+      <h1>Conócenos</h1>
+      <p>En Huellas de Amor cuidamos a tus mascotas como parte de nuestra familia 🐾</p>
+    </div>
+  </section>
 
-    <h2>Nuestro equipo</h2>
-    <p>Amantes de los animales, expertos en nutrición y bienestar, siempre listos para ayudarte.</p>
-  </main>
+  <!-- Historia -->
+  <section class="nosotros-historia container">
+    <div class="historia-texto">
+      <h2>Nuestra historia</h2>
+      <p>Nacimos con la idea de ofrecer más que productos: buscamos crear experiencias llenas de amor y confianza entre mascotas y dueños. 
+      Desde una pequeña tienda de barrio, hoy somos un espacio lleno de cariño, donde cada detalle importa y cada cliente es parte de la familia Huellas de Amor.</p>
+    </div>
+    <div class="historia-img">
+      <img src="images/nosotros-historia.jpg" alt="Historia Huellas de Amor" loading="lazy">
+    </div>
+  </section>
 
- <!-- Footer -->
+  <!-- Valores -->
+  <section class="nosotros-valores">
+    <div class="container">
+      <h2>Nuestros valores</h2>
+      <div class="valores-grid">
+        <div class="valor">
+          <i class="fa-solid fa-heart"></i>
+          <h3>Amor</h3>
+          <p>El motor que nos inspira a cuidar a cada mascota como si fuera nuestra.</p>
+        </div>
+        <div class="valor">
+          <i class="fa-solid fa-paw"></i>
+          <h3>Compromiso</h3>
+          <p>Ofrecemos productos de calidad, siempre pensando en el bienestar animal.</p>
+        </div>
+        <div class="valor">
+          <i class="fa-solid fa-seedling"></i>
+          <h3>Confianza</h3>
+          <p>Trabajamos con marcas responsables y un equipo que siempre acompaña.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Equipo -->
+  <section class="nosotros-equipo container">
+    <h2>Conoce a nuestro equipo</h2>
+    <div class="equipo-grid">
+      <div class="equipo-card">
+        <img src="images/equipo1.jpg" alt="Laura - nutrición y cuidado felino" loading="lazy">
+        <h3>Laura</h3>
+        <p>Nutrición y cuidado felino</p>
+      </div>
+      <div class="equipo-card">
+        <img src="images/equipo2.jpg" alt="Carlos - adiestramiento canino" loading="lazy">
+        <h3>Carlos</h3>
+        <p>Adiestramiento canino</p>
+      </div>
+      <div class="equipo-card">
+        <img src="images/equipo3.jpg" alt="María - bienestar de aves y peces" loading="lazy">
+        <h3>María</h3>
+        <p>Bienestar de aves y peces</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
 <footer class="footer">
   <div class="container footer__inner">
-    
+
     <!-- Marca y lema -->
     <div class="footer__brand">
-      <img src="images/logo.svg" class="brand__logo" alt="Huellas de Amor">
+      <img src="images/logo.svg" class="brand__logo" alt="Huellas de Amor" loading="lazy">
       <p class="footer__slogan">“Gracias por dejar huellas de amor en la vida de tus mascotas.”</p>
       <p>© 2025 Huellas de Amor. Todos los derechos reservados.</p>
     </div>
 
     <!-- Columnas -->
     <div class="footer__cols">
-      
+
       <!-- Contacto -->
       <div>
         <h4>Atención al cliente</h4>
-        <p><i class="fa-solid fa-location-dot"></i> Calle 123 #45-67, Bogotá</p>
-        <p><i class="fa-brands fa-whatsapp"></i> WhatsApp: 3160810117</p>
-        <p><i class="fa-solid fa-phone"></i> Teléfono: 3128076150</p>
-        <p><i class="fa-solid fa-envelope"></i> atencionalcliente@huellasdeamorpets.com</p>
-        <p><i class="fa-solid fa-clock"></i> Lun–Sáb: 8am–8pm / Dom–Fest: 9am–6pm</p>
+        <ul class="footer__links">
+          <li><i class="fa-solid fa-location-dot"></i>CRA. 20 # 45 A 36 SUR - SANTA</li>
+          <li><i class="fa-brands fa-whatsapp"></i> WhatsApp: 3160810117</li>
+          <li><i class="fa-solid fa-phone"></i> Teléfono: 3128076150</li>
+          <li><i class="fa-solid fa-envelope"></i> atencionalcliente@huellasdeamorpets.com</li>
+          <li><i class="fa-solid fa-clock"></i> Lun–Sáb: 8am–8pm / Dom–Fest: 9am–6pm</li>
+        </ul>
       </div>
 
       <!-- Enlaces rápidos -->
@@ -68,7 +133,7 @@
           <li><a href="index.html">Inicio</a></li>
           <li><a href="productos.html">Productos</a></li>
           <li><a href="blog.html">Blog</a></li>
-          <li><a href="nosotros.html">Sobre nosotros</a></li>
+          <li><a href="nosotros.html">Nosotros</a></li>
           <li><a href="contacto.html">Contacto</a></li>
         </ul>
       </div>
@@ -77,10 +142,10 @@
       <div>
         <h4>Categorías</h4>
         <ul class="footer__links">
-          <li><a href="#" onclick="activarCategoria('perros')">Perros</a></li>
-          <li><a href="#" onclick="activarCategoria('gatos')">Gatos</a></li>
-          <li><a href="#" onclick="activarCategoria('aves')">Aves</a></li>
-          <li><a href="#" onclick="activarCategoria('peces')">Peces</a></li>
+          <li><a href="#" class="footer-cat" data-cat="perros">Perros</a></li>
+          <li><a href="#" class="footer-cat" data-cat="gatos">Gatos</a></li>
+          <li><a href="#" class="footer-cat" data-cat="aves">Aves</a></li>
+          <li><a href="#" class="footer-cat" data-cat="peces">Peces</a></li>
         </ul>
       </div>
 
@@ -103,15 +168,17 @@
       <a href="#"><i class="fa-brands fa-instagram"></i></a>
       <a href="#"><i class="fa-brands fa-tiktok"></i></a>
     </div>
+
     <div class="footer__policies">
-      <a href="#">Términos y condiciones</a>
-      <a href="#">Política de privacidad</a>
-      <a href="#">Envíos y devoluciones</a>
+      <a href="terminos.html">Términos y condiciones</a>
+      <a href="privacidad.html">Política de privacidad</a>
+      <a href="envios.html">Envíos y devoluciones</a>
     </div>
+
     <div class="payments">
-      <img src="images/pay-visa.png" alt="Visa">
-      <img src="images/pay-mastercard.png" alt="MasterCard">
-      <img src="images/pay-pse.png" alt="PSE">
+      <img src="images/pay-visa.png" alt="Visa" loading="lazy">
+      <img src="images/pay-mastercard.png" alt="MasterCard" loading="lazy">
+      <img src="images/pay-pse.png" alt="PSE" loading="lazy">
     </div>
   </div>
 </footer>

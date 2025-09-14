@@ -1,124 +1,135 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Productos | Huellas de Amor</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1">
+ <meta name="description" content="Huellas de Amor Petshop - Todo para tus mascotas: alimentos, accesorios, juguetes y más.">
+ <link rel="icon" type="image/png" href="images/favicon.png">
+
+ <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+ <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <!-- Header -->
-<header class="topbar">
-  <div class="container topbar__inner">
-    <a class="brand" href="index.html">
-      <img src="images/logo.svg" alt="Huellas de Amor" class="brand__logo">
-      <span class="brand__name">Huellas de Amor</span>
-    </a>
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="index.html">
+        <img src="images/logo.svg" alt="Huellas de Amor" class="brand__logo" loading="lazy">
+        <span class="brand__name">Huellas de Amor</span>
+      </a>
 
-    <nav class="nav">
-      <a class="nav__link" href="index.html">Inicio</a>
-      <a class="nav__link" href="productos.html">Productos</a>
-      <a class="nav__link" href="blog.html">Blog</a>
-      <a class="nav__link" href="nosotros.html">Nosotros</a>
-      <a class="nav__link" href="contacto.html">Contacto</a>
-    </nav>
-  </div>
-</header>
-
+      <nav class="nav">
+        <a class="nav__link" href="index.html">Inicio</a>
+        <a class="nav__link active" href="productos.html">Productos</a>
+        <a class="nav__link" href="blog.html">Blog</a>
+        <a class="nav__link" href="nosotros.html">Nosotros</a>
+        <a class="nav__link" href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
 
   <!-- Contenido -->
-  <main class="container">
-    <h1>Catálogo de Productos</h1>
-    <p>Explora nuestra variedad de productos para consentir a tu mascota 🐾</p>
+  <main>
+    <!-- Hero del catálogo -->
+    <section class="hero-catalogo">
+      <div class="hero-catalogo__overlay"></div>
+      <div class="container hero-catalogo__content">
+        <h1>🐾 Catálogo de Productos</h1>
+        <p>Encuentra todo lo que tu mascota necesita en un solo lugar ✨</p>
+      </div>
+    </section>
 
+    <!-- Grid de productos -->
     <section class="catalogo container">
       <div id="gridProductos">
-        <!-- Aquí puedes cargar dinámicamente con JS o PHP -->
-        <p class="info">Próximamente podrás ver nuestro catálogo en línea.</p>
+        <!-- Aquí se cargarán los productos dinámicos -->
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
-<footer class="footer">
-  <div class="container footer__inner">
-    
-    <!-- Marca y lema -->
-    <div class="footer__brand">
-      <img src="images/logo.svg" class="brand__logo" alt="Huellas de Amor">
-      <p class="footer__slogan">“Gracias por dejar huellas de amor en la vida de tus mascotas.”</p>
-      <p>© 2025 Huellas de Amor. Todos los derechos reservados.</p>
-    </div>
+  <!-- Footer unificado y mejorado -->
+  <footer class="footer">
+    <div class="container footer__inner">
 
-    <!-- Columnas -->
-    <div class="footer__cols">
-      
-      <!-- Contacto -->
-      <div>
-        <h4>Atención al cliente</h4>
-        <p><i class="fa-solid fa-location-dot"></i> Calle 123 #45-67, Bogotá</p>
-        <p><i class="fa-brands fa-whatsapp"></i> WhatsApp: 3160810117</p>
-        <p><i class="fa-solid fa-phone"></i> Teléfono: 3128076150</p>
-        <p><i class="fa-solid fa-envelope"></i> atencionalcliente@huellasdeamorpets.com</p>
-        <p><i class="fa-solid fa-clock"></i> Lun–Sáb: 8am–8pm / Dom–Fest: 9am–6pm</p>
+      <!-- Marca y lema -->
+      <div class="footer__brand">
+        <img src="images/logo.svg" class="brand__logo" alt="Huellas de Amor" loading="lazy">
+        <p class="footer__slogan">“Gracias por dejar huellas de amor en la vida de tus mascotas.”</p>
+        <p>© 2025 Huellas de Amor. Todos los derechos reservados.</p>
       </div>
 
-      <!-- Enlaces rápidos -->
-      <div>
-        <h4>Enlaces rápidos</h4>
-        <ul class="footer__links">
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="productos.html">Productos</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="nosotros.html">Sobre nosotros</a></li>
-          <li><a href="contacto.html">Contacto</a></li>
-        </ul>
+      <!-- Columnas -->
+      <div class="footer__cols">
+
+        <!-- Contacto -->
+        <div>
+          <h4>Atención al cliente</h4>
+          <ul class="footer__links">
+            <li><i class="fa-solid fa-location-dot"></i> CRA. 20 # 45 A 36 SUR - SANTA</li>
+            <li><i class="fa-brands fa-whatsapp"></i> WhatsApp: 3160810117</li>
+            <li><i class="fa-solid fa-phone"></i> Teléfono: 3128076150</li>
+            <li><i class="fa-solid fa-envelope"></i> atencionalcliente@huellasdeamorpets.com</li>
+            <li><i class="fa-solid fa-clock"></i> Lun–Sáb: 8am–8pm / Dom–Fest: 9am–6pm</li>
+          </ul>
+        </div>
+
+        <!-- Enlaces rápidos -->
+        <div>
+          <h4>Enlaces rápidos</h4>
+          <ul class="footer__links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="productos.html">Productos</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="nosotros.html">Nosotros</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </div>
+
+        <!-- Categorías -->
+        <div>
+          <h4>Categorías</h4>
+          <ul class="footer__links">
+            <li><a href="#" class="footer-cat" data-cat="perros">Perros</a></li>
+            <li><a href="#" class="footer-cat" data-cat="gatos">Gatos</a></li>
+            <li><a href="#" class="footer-cat" data-cat="aves">Aves</a></li>
+            <li><a href="#" class="footer-cat" data-cat="peces">Peces</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter -->
+        <div>
+          <h4>Suscríbete</h4>
+          <p>Recibe consejos, novedades y amor directo a tu bandeja de entrada 🐾</p>
+          <form class="newsletter__form">
+            <input type="email" placeholder="Tu correo electrónico" required>
+            <button type="submit" class="btn btn--primary">Suscribirme</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Línea inferior -->
+    <div class="footer__bottom">
+      <div class="social">
+        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
       </div>
 
-      <!-- Categorías -->
-      <div>
-        <h4>Categorías</h4>
-        <ul class="footer__links">
-          <li><a href="#" onclick="activarCategoria('perros')">Perros</a></li>
-          <li><a href="#" onclick="activarCategoria('gatos')">Gatos</a></li>
-          <li><a href="#" onclick="activarCategoria('aves')">Aves</a></li>
-          <li><a href="#" onclick="activarCategoria('peces')">Peces</a></li>
-        </ul>
+      <div class="footer__policies">
+        <a href="terminos.html">Términos y condiciones</a>
+        <a href="privacidad.html">Política de privacidad</a>
+        <a href="envios.html">Envíos y devoluciones</a>
       </div>
 
-      <!-- Newsletter -->
-      <div>
-        <h4>Suscríbete</h4>
-        <p>Recibe consejos, novedades y amor directo a tu bandeja de entrada 🐾</p>
-        <form class="newsletter__form">
-          <input type="email" placeholder="Tu correo electrónico" required>
-          <button type="submit" class="btn btn--primary">Suscribirme</button>
-        </form>
+      <div class="payments">
+        <img src="images/pay-visa.png" alt="Visa" loading="lazy">
+        <img src="images/pay-mastercard.png" alt="MasterCard" loading="lazy">
+        <img src="images/pay-pse.png" alt="PSE" loading="lazy">
       </div>
     </div>
-  </div>
-
-  <!-- Línea inferior -->
-  <div class="footer__bottom">
-    <div class="social">
-      <a href="#"><i class="fa-brands fa-facebook"></i></a>
-      <a href="#"><i class="fa-brands fa-instagram"></i></a>
-      <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-    </div>
-    <div class="footer__policies">
-      <a href="#">Términos y condiciones</a>
-      <a href="#">Política de privacidad</a>
-      <a href="#">Envíos y devoluciones</a>
-    </div>
-    <div class="payments">
-      <img src="images/pay-visa.png" alt="Visa">
-      <img src="images/pay-mastercard.png" alt="MasterCard">
-      <img src="images/pay-pse.png" alt="PSE">
-    </div>
-  </div>
-</footer>
-
-
+  </footer>
 </body>
 </html>

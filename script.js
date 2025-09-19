@@ -257,6 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  
   // -------------------- Newsletter --------------------
   document.querySelector('.newsletter__form')?.addEventListener('submit', e => {
     e.preventDefault();
@@ -364,6 +365,7 @@ document.querySelectorAll(".nav__link").forEach(link => {
     navToggle.setAttribute("aria-expanded", false);
   });
 });
+
 
 
 

@@ -327,20 +327,39 @@ session_start();
     </div>
   </footer>
 
-  <!-- Carrito lateral -->
-  <div id="carrito-panel" class="carrito-panel">
-    <div class="carrito-header">
-      <h3>🛒 Tu Carrito</h3>
-      <button id="cerrarCarrito">✖</button>
-    </div>
-    <div id="carrito-items" class="carrito-items">
-      <p>Tu carrito está vacío</p>
-    </div>
-    <div class="carrito-footer">
-      <p>Total: <span id="carrito-total">$0</span></p>
-      <button class="finalizar-compra">Finalizar compra</button>
-    </div>
+ <!-- Carrito lateral -->
+<div id="carrito-panel" class="carrito-panel">
+  <div class="carrito-header">
+    <h3>🛒 Tu Carrito</h3>
+    <button id="cerrarCarrito">✖</button>
   </div>
+
+  <div id="carrito-items" class="carrito-items">
+    <?php
+    session_start();
+
+    if (!isset($_SESSION["carrito"]) || empty($_SESSION["carrito"])) {
+        echo "<p>Tu carrito está vacío</p>";
+    } else {
+        foreach ($_SESSION["carrito"] as $index => $producto) {
+            echo "<div class='carrito-item'>";
+            echo "<img src='{$producto["imagen"]}' alt='{$producto["nombre"]}'>";
+            echo "<h4>{$producto["nombre"]}</h4>";
+            echo "<span class='precio'>$" . number_format($producto["precio"], 0, ',', '.') . "</span>";
+            echo "<button class='btn-eliminar' data-remove='{$index}'>✖ Eliminar</button>";
+            echo "</div>";
+        }
+    }
+    ?>
+  </div>
+
+  <div class="carrito-footer">
+    <p>Total: <span id="carrito-total">$0</span></p>
+    <button class="finalizar-compra" id="btnFinalizar">Finalizar compra</button>
+  </div>
+</div>
+
+
 
   <!-- Scripts -->
   <script src="script.js"></script>

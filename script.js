@@ -365,6 +365,50 @@ document.querySelectorAll(".nav__link").forEach(link => {
     navToggle.setAttribute("aria-expanded", false);
   });
 });
+document.addEventListener('click', e => {
+  const boton = e.target.closest('[data-add]');
+  if (boton) {
+    const id = boton.getAttribute('data-add');
+
+    fetch('add_to_cart.php', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      body: `producto_id=${id}`
+    })
+    .then(res => res.text())
+    .then(msg => {
+      console.log(msg); // Muestra el mensaje en la consola
+      boton.textContent = 'Añadido ✓'; // Cambia el texto del botón
+      setTimeout(() => boton.textContent = 'Agregar', 1200); // Lo regresa después de 1.2 segundos
+    });
+  }
+});
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.btn-eliminar').forEach(boton => {
+    boton.addEventListener('click', () => {
+      const index = boton.getAttribute('data-remove');
+
+      fetch('eliminar_del_carrito.php', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: `producto_id=${index}`
+      })
+      .then(res => res.text())
+      .then(msg => {
+        console.log(msg); // Debe decir "Producto eliminado"
+        location.reload(); // Recarga el carrito
+      });
+    });
+  });
+});
+document.getElementById('btnFinalizar').addEventListener('click', () => {
+  fetch('finalizar_compra.php')
+    .then(res => res.text())
+    .then(msg => {
+      alert(msg); // Muestra "Pedido registrado con éxito"
+      location.reload();
+    });
+});
 
 
 

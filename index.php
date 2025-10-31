@@ -17,6 +17,7 @@ session_start();
   
  
 
+
   <!-- Header unificado -->
   <header class="topbar">
     <div class="container topbar__inner">
@@ -108,7 +109,7 @@ session_start();
   </section>
 
   <!-- Categorías destacadas -->
-  <section class="featured-cats container">
+  <section class="featured-cats container busca-mascota">
     <h2 class="section-title">Busca por tu mascota</h2>
     <div class="featured-cats__grid">
       <button class="cat-card" data-cat="perros">
@@ -214,7 +215,45 @@ session_start();
   </div>
 </section>
 
+<!-- === POPULARES PARA GATOS === -->
+<section class="populares container">
+  <h2 class="section-title">Populares para gatos</h2>
 
+  <!-- Flechas visibles -->
+  <button class="pop-btn prev" data-dir="left"><i class="fa-solid fa-chevron-left"></i></button>
+  <button class="pop-btn next" data-dir="right"><i class="fa-solid fa-chevron-right"></i></button>
+
+  <div class="populares-grid">
+    <div class="populares-items" id="pop-gatos">
+      <?php 
+        include("productos-populares.php");
+        mostrarProductos($resultado_gatos);
+      ?>
+    </div>
+    <div class="populares-img">
+      <img src="images/pop-gatos.jpg" alt="Gato feliz" loading="lazy">
+    </div>
+  </div>
+</section>
+
+
+<!-- === POPULARES PARA PERROS === -->
+<section class="populares container">
+  <h2 class="section-title">Populares para perros</h2>
+
+  <!-- Flechas visibles -->
+  <button class="pop-btn prev" data-dir="left"><i class="fa-solid fa-chevron-left"></i></button>
+  <button class="pop-btn next" data-dir="right"><i class="fa-solid fa-chevron-right"></i></button>
+
+  <div class="populares-grid">
+    <div class="populares-img">
+      <img src="images/pop-perros.jpg" alt="Perro adorable" loading="lazy">
+    </div>
+    <div class="populares-items" id="pop-perros">
+      <?php mostrarProductos($resultado_perros); ?>
+    </div>
+  </div>
+</section>
 
 <!-- Recomendados -->
  

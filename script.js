@@ -409,6 +409,66 @@ document.getElementById('btnFinalizar').addEventListener('click', () => {
       location.reload();
     });
 });
+// --- Control del botón "Atrás" del navegador ---
+document.querySelectorAll(".cat-card, .nav__link").forEach(btn => {
+  btn.addEventListener("click", e => {
+    const categoria = e.currentTarget.dataset.cat;
+    mostrarSeccion(categoria);
+    // Guardamos la acción en el historial del navegador
+    history.pushState({ cat: categoria }, "", `#${categoria}`);
+  });
+});
+
+// Cuando el usuario presiona "Atrás" o "Adelante"
+window.addEventListener("popstate", e => {
+  if (e.state && e.state.cat) {
+    mostrarSeccion(e.state.cat);
+  } else {
+    mostrarInicio();
+  }
+});
+
+// Función para mostrar una sección del catálogo
+function mostrarSeccion(cat) {
+  const catalogo = document.querySelector("#catalogo");
+  catalogo.removeAttribute("hidden");
+  document.querySelector("#tituloCatalogo").textContent = `Productos de ${cat}`;
+  window.scrollTo({ top: catalogo.offsetTop - 50, behavior: "smooth" });
+}
+
+// Volver al inicio
+function mostrarInicio() {
+  const catalogo = document.querySelector("#catalogo");
+  catalogo.setAttribute("hidden", true);
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+// === Navegación con flechas en Populares ===
+document.querySelectorAll(".arrow-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const target = btn.getAttribute("data-target");
+    const container = document.querySelector(`#pop-${target}`);
+    const scrollAmount = 300;
+    container.scrollBy({
+      left: btn.classList.contains("next") ? scrollAmount : -scrollAmount,
+      behavior: "smooth"
+    });
+  });
+});
+// === Flechas de desplazamiento para "populares" ===
+document.querySelectorAll('.pop-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const container = btn.closest('.populares').querySelector('.populares-items');
+    const scrollAmount = 300;
+
+    if (btn.dataset.dir === 'left') {
+      container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    } else {
+      container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  });
+});
+
+
 
 
 

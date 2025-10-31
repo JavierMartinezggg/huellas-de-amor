@@ -2233,6 +2233,125 @@ section {
     background: linear-gradient(90deg, var(--accent), var(--accent-600));
     border-radius: 2px;
 }
+/* === UNIFICAR ESTILO DE TÍTULOS === */
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a1f2e;
+  margin: 25px 0 15px;
+  text-align: left; /* todos los títulos alineados a la izquierda */
+}
+
+/* ✅ Solo “Busca por tu mascota” centrado */
+.busca-mascota .section-title {
+  text-align: center !important;
+}
+/* === Sección Populares === */
+.populares {
+  margin: 80px 0;
+}
+
+.populares-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.populares-grid.inverse {
+  flex-direction: row-reverse;
+}
+
+.populares-img img {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* DISEÑO HORIZONTAL */
+.populares-items {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+  overflow-x: auto;
+  padding: 15px 5px;
+}
+
+.pop-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-width: 220px;
+  flex-shrink: 0;
+}
+
+.pop-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.pop-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.pop-card h3 {
+  font-size: 1rem;
+  margin: 10px 0 8px;
+  color: #222;
+  line-height: 1.3;
+}
+
+.pop-card .precio {
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+}
+
+.btn-popular {
+  background: linear-gradient(135deg, var(--accent), var(--accent-600));
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  width: 100%;
+}
+
+.btn-popular:hover {
+  background: var(--accent-600);
+}
+
+/* Responsive */
+@media(max-width: 900px) {
+  .populares-grid {
+    flex-direction: column;
+  }
+  
+  .populares-items {
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+}
+
+
+
+
+
+
+
+
 
 
 

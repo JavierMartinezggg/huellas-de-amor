@@ -14,7 +14,14 @@ $productos = [];
 
 if ($resultado->num_rows > 0) {
     while ($fila = $resultado->fetch_assoc()) {
-        $productos[] = $fila;
+        $productos[] = [
+            "id" => $fila["id"],
+            "nombre" => $fila["nombre"],
+            "descripcion" => $fila["descripcion"],
+            "precio" => $fila["precio"],
+            "descuento" => $fila["descuento"],
+            "imagen" => "images/" . $fila["imagen"] // 👈 Aquí está la clave
+        ];
     }
 }
 

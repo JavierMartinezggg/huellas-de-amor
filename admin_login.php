@@ -1,11 +1,12 @@
 <?php
 session_start();
-$usuario = "admin";
-$clave = "1234";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    if ($_POST["user"] === $usuario && $_POST["pass"] === $clave) {
-        $_SESSION["admin"] = true;
+    $usuario = $_POST["usuario"];
+    $clave = $_POST["clave"];
+
+    if ($usuario === "admin" && $clave === "1234") {
+        $_SESSION["admin"] = $usuario;
         header("Location: admin_panel.php");
         exit;
     } else {
@@ -15,9 +16,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 ?>
 
 <form method="POST">
-  <h2>🔐 Acceso administrador</h2>
-  <input type="text" name="user" placeholder="Usuario"><br>
-  <input type="password" name="pass" placeholder="Contraseña"><br>
-  <button type="submit">Ingresar</button>
-  <?php if (isset($error)) echo "<p>$error</p>"; ?>
+  <h2>Iniciar sesión como admin</h2>
+  <input type="text" name="usuario" placeholder="Usuario">
+  <input type="password" name="clave" placeholder="Contraseña">
+  <button type="submit">Entrar</button>
+  <?php if (isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
 </form>

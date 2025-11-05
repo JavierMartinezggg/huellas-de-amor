@@ -68,45 +68,48 @@ session_start();
     </div>
   </header>
 
-  <!-- Slider -->
-  <section class="hero">
-    <div class="hero__slider" id="slider">
-      <div class="hero__slide active" style="--bg:url('images/slide1.jpg')">
-        <div class="hero__content container">
-          <h1>Cuida a tu mejor amigo</h1>
-          <p>Nutrición y bienestar al mejor precio.</p>
-          <a class="btn btn--primary" data-cat="perros" href="#catalogo">Comprar ahora</a>
-        </div>
-      </div>
-      <div class="hero__slide" style="--bg:url('images/slide2.jpg')">
-        <div class="hero__content container">
-          <h1>Todo para gatos felices</h1>
-          <p>Rascadores, arenas y juguetes irresistibles.</p>
-          <a class="btn btn--primary" data-cat="gatos" href="#catalogo">Ver productos</a>
-        </div>
-      </div>
-      <div class="hero__slide" style="--bg:url('images/slide3.jpg')">
-        <div class="hero__content container">
-          <h1>Acuarios listos para brillar</h1>
-          <p>Filtros, iluminación y decoración.</p>
-          <a class="btn btn--primary" data-cat="peces" href="#catalogo">Explorar</a>
-        </div>
+ <!-- Slider -->
+<section class="hero">
+  <div class="hero__slider" id="slider">
+    <div class="hero__slide active" style="background-image:url('images/slide1.jpg')">
+      <div class="hero__content container">
+        <h1>Cuida a tu mejor amigo</h1>
+        <p>Nutrición y bienestar al mejor precio.</p>
+        <a class="btn btn--primary" data-cat="perros" href="#catalogo">Comprar ahora</a>
       </div>
     </div>
 
-    <button class="hero__nav prev" id="prev"><i class="fa-solid fa-chevron-left"></i></button>
-    <button class="hero__nav next" id="next"><i class="fa-solid fa-chevron-right"></i></button>
-  </section>
-
-  <!-- Beneficios -->
-  <section class="benefits">
-    <div class="container benefits__grid">
-      <div class="benefit"><i class="fa-solid fa-truck-fast"></i> Entrega el mismo día</div>
-      <div class="benefit"><i class="fa-solid fa-shield"></i> Compra segura</div>
-      <div class="benefit"><i class="fa-solid fa-hand-holding-dollar"></i> Pago contra entrega</div>
-      <div class="benefit"><i class="fa-solid fa-rotate"></i> Cambios fáciles</div>
+    <div class="hero__slide" style="background-image:url('images/slide2.jpg')">
+      <div class="hero__content container">
+        <h1>Todo para gatos felices</h1>
+        <p>Rascadores, arenas y juguetes irresistibles.</p>
+        <a class="btn btn--primary" data-cat="gatos" href="#catalogo">Ver productos</a>
+      </div>
     </div>
-  </section>
+
+    <div class="hero__slide" style="background-image:url('images/slide3.jpg')">
+      <div class="hero__content container">
+        <h1>Acuarios listos para brillar</h1>
+        <p>Filtros, iluminación y decoración.</p>
+        <a class="btn btn--primary" data-cat="peces" href="#catalogo">Explorar</a>
+      </div>
+    </div>
+  </div>
+
+  <button class="hero__nav prev" id="prev"><i class="fa-solid fa-chevron-left"></i></button>
+  <button class="hero__nav next" id="next"><i class="fa-solid fa-chevron-right"></i></button>
+</section>
+
+<!-- Beneficios -->
+<section class="benefits">
+  <div class="container benefits__grid">
+    <div class="benefit"><i class="fa-solid fa-truck-fast"></i> Entrega el mismo día</div>
+    <div class="benefit"><i class="fa-solid fa-shield"></i> Compra segura</div>
+    <div class="benefit"><i class="fa-solid fa-hand-holding-dollar"></i> Pago contra entrega</div>
+    <div class="benefit"><i class="fa-solid fa-rotate"></i> Cambios fáciles</div>
+  </div>
+</section>
+
 
   <!-- Categorías destacadas -->
   <section class="featured-cats container busca-mascota">
@@ -126,6 +129,39 @@ session_start();
       </button>
     </div>
   </section>
+  
+<!-- Marcas Destacadas -->
+<section class="marcas-destacadas">
+    <div class="container">
+        <h3 class="section-subtitle">Marcas destacadas del mes</h3>
+        <div class="marcas-grid">
+            <div class="marca-item" data-marca="Purina">
+                <div class="marca-logo">
+                    <img src="images/product01.png" alt="Purina">
+                </div>
+                <span>Purina</span>
+            </div>
+            <div class="marca-item" data-marca="Pro Plan">
+                <div class="marca-logo">
+                    <img src="images/product02.png" alt="Pro Plan">
+                </div>
+                <span>Pro Plan</span>
+            </div>
+            <div class="marca-item" data-marca="Hills">
+                <div class="marca-logo">
+                    <img src="images/product03.png" alt="Hills">
+                </div>
+                <span>Hills</span>
+            </div>
+            <div class="marca-item" data-marca="Royal Canin">
+                <div class="marca-logo">
+                    <img src="images/cat-alimento-gato.png" alt="Royal Canin">
+                </div>
+                <span>Royal Canin</span>
+            </div>
+        </div>
+    </div>
+</section>
 
   <!-- Subcategorías -->
   <section class="subcats container" id="subcategorias">
@@ -186,32 +222,39 @@ session_start();
 <!-- Ofertas -->
 <section class="ofertas container">
   <h2>Ofertas</h2>
-  <div class="ofertas-grid">
-    <?php
-    include("conexion.php");
-    $sql = "SELECT * FROM productos WHERE descuento > 0 LIMIT 6";
-    $resultado = $conn->query($sql);
 
-    if ($resultado->num_rows > 0) {
-      while ($producto = $resultado->fetch_assoc()) {
-        $precio_final = $producto['precio'] - ($producto['precio'] * $producto['descuento'] / 100);
-        ?>
-        <div class="oferta-card">
-          <span class="badge-descuento"><?php echo $producto['descuento']; ?>%</span>
-          <img src="<?php echo $producto['imagen']; ?>" alt="<?php echo $producto['nombre']; ?>" loading="lazy">
-          <h3><?php echo $producto['nombre']; ?></h3>
-          <p class="precio">
-            $<?php echo number_format($precio_final, 0, ',', '.'); ?>
-            <span class="precio-antiguo">$<?php echo number_format($producto['precio'], 0, ',', '.'); ?></span>
-          </p>
-          <button class="btn-oferta" data-add="<?php echo $producto['id']; ?>">Agregar</button>
-        </div>
-        <?php
+  <div class="ofertas-wrapper">
+    <button class="oferta-arrow prev" data-target="ofertas" aria-label="Anterior">‹</button>
+
+    <div class="ofertas-grid" id="ofertas">
+      <?php
+      include("conexion.php");
+      $sql = "SELECT * FROM productos WHERE descuento > 0 LIMIT 6";
+      $resultado = $conn->query($sql);
+
+      if ($resultado->num_rows > 0) {
+        while ($producto = $resultado->fetch_assoc()) {
+          $precio_final = $producto['precio'] - ($producto['precio'] * $producto['descuento'] / 100);
+          ?>
+          <div class="oferta-card">
+            <span class="badge-descuento"><?php echo $producto['descuento']; ?>%</span>
+            <img src="<?php echo $producto['imagen']; ?>" alt="<?php echo $producto['nombre']; ?>" loading="lazy">
+            <h3><?php echo $producto['nombre']; ?></h3>
+            <p class="precio">
+              $<?php echo number_format($precio_final, 0, ',', '.'); ?>
+              <span class="precio-antiguo">$<?php echo number_format($producto['precio'], 0, ',', '.'); ?></span>
+            </p>
+            <button class="btn-oferta" data-add="<?php echo $producto['id']; ?>">Agregar</button>
+          </div>
+          <?php
+        }
+      } else {
+        echo "<p>No hay ofertas disponibles.</p>";
       }
-    } else {
-      echo "<p>No hay ofertas disponibles.</p>";
-    }
-    ?>
+      ?>
+    </div>
+
+    <button class="oferta-arrow next" data-target="ofertas" aria-label="Siguiente">›</button>
   </div>
 </section>
 

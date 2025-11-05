@@ -409,32 +409,6 @@ document.getElementById('btnFinalizar').addEventListener('click', () => {
       location.reload();
     });
 });
-// --- Control del botón "Atrás" del navegador ---
-document.querySelectorAll(".cat-card, .nav__link").forEach(btn => {
-  btn.addEventListener("click", e => {
-    const categoria = e.currentTarget.dataset.cat;
-    mostrarSeccion(categoria);
-    // Guardamos la acción en el historial del navegador
-    history.pushState({ cat: categoria }, "", `#${categoria}`);
-  });
-});
-
-// Cuando el usuario presiona "Atrás" o "Adelante"
-window.addEventListener("popstate", e => {
-  if (e.state && e.state.cat) {
-    mostrarSeccion(e.state.cat);
-  } else {
-    mostrarInicio();
-  }
-});
-
-// Función para mostrar una sección del catálogo
-function mostrarSeccion(cat) {
-  const catalogo = document.querySelector("#catalogo");
-  catalogo.removeAttribute("hidden");
-  document.querySelector("#tituloCatalogo").textContent = `Productos de ${cat}`;
-  window.scrollTo({ top: catalogo.offsetTop - 50, behavior: "smooth" });
-}
 
 // Volver al inicio
 function mostrarInicio() {
@@ -467,8 +441,523 @@ document.querySelectorAll('.pop-btn').forEach(btn => {
     }
   });
 });
+// === Flechas para la sección OFERTAS ===
+document.addEventListener('DOMContentLoaded', () => {
+  const flechas = document.querySelectorAll('.oferta-arrow');
+
+  flechas.forEach(flecha => {
+    flecha.addEventListener('click', () => {
+      const targetId = flecha.dataset.target; // ejemplo: "ofertas"
+      const contenedor = document.getElementById(targetId);
+      if (!contenedor) return;
+
+      const mover = contenedor.clientWidth * 0.8; // mueve el 80% del ancho
+      const direccion = flecha.classList.contains('next') ? mover : -mover;
+
+      contenedor.scrollBy({
+        left: direccion,
+        behavior: 'smooth'
+      });
+    });
+  });
+});
+// ============================
+// FILTRO POR MARCAS - VERSIÓN PROFESIONAL
+// ============================
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Agregar event listeners a las marcas
+    const marcaItems = document.querySelectorAll('.marca-item');
+    
+    marcaItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const marca = this.getAttribute('data-marca');
+            filtrarPorMarca(marca);
+        });
+    });
+});
+
+async function filtrarPorMarca(marca) {
+    try {
+        // Mostrar loading
+        mostrarLoading(marca);
+        
+        // Hacer petición a la base de datos
+        const response = await fetch(`filtrar_marca.php?marca=${encodeURIComponent(marca)}`);
+        const data = await response.json();
+        
+        if (data.success) {
+            mostrarProductosFiltrados(data.productos, marca);
+        } else {
+            mostrarError('Error al cargar los productos');
+        }
+        
+    } catch (error) {
+        console.error('Error:', error);
+        mostrarError('Error de conexión');
+    }
+}
+
+function mostrarLoading(marca) {
+    const gridProductos = document.getElementById('gridProductos');
+    const catalogo = document.getElementById('catalogo');
+    
+    // Mostrar catálogo
+    catalogo.hidden = false;
+    
+    // Mostrar loading
+    gridProductos.innerHTML = `
+        <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px;">
+            <div class="loading-spinner" style="
+                width: 50px; 
+                height: 50px; 
+                border: 4px solid #f3f3f3; 
+                border-top: 4px solid var(--accent); 
+                border-radius: 50%; 
+                animation: spin 1s linear infinite;
+                margin: 0 auto 20px;
+            "></div>
+            <h3 style="color: var(--accent); margin-bottom: 10px;">Buscando productos ${marca}</h3>
+            <p style="color: var(--muted);">Cargando...</p>
+        </div>
+    `;
+    
+    // Hacer scroll al catálogo
+    catalogo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function mostrarProductosFiltrados(productos, marca) {
+    const gridProductos = document.getElementById('gridProductos');
+    const tituloCatalogo = document.getElementById('tituloCatalogo');
+    const contadorRes = document.getElementById('contadorResultados');
+    
+    // Actualizar título y contador
+    tituloCatalogo.textContent = `Marca: ${marca}`;
+    contadorRes.textContent = `${productos.length} productos encontrados`;
+    
+    if (productos.length === 0) {
+        gridProductos.innerHTML = `
+            <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px;">
+                <div style="font-size: 3rem; margin-bottom: 20px;">🐾</div>
+                <h3 style="color: var(--muted); margin-bottom: 10px;">No hay productos de ${marca}</h3>
+                <p style="color: var(--muted); margin-bottom: 20px;">Próximamente tendremos stock de esta marca</p>
+                <button onclick="mostrarTodosLosProductos()" class="btn btn--primary">
+                    Ver todos los productos
+                </button>
+            </div>
+        `;
+        return;
+    }
+    
+    // Mostrar productos
+    gridProductos.innerHTML = productos.map(producto => {
+        const precioFormateado = new Intl.NumberFormat('es-CO', {
+            style: 'currency',
+            currency: 'COP',
+            minimumFractionDigits: 0
+        }).format(producto.precio);
+        
+        const imagenSrc = producto.imagen && producto.imagen !== 'NULL' ? 
+                         `images/${producto.imagen}` : 
+                         'https://via.placeholder.com/200x200?text=Imagen+No+Disponible';
+        
+        return `
+            <article class="card">
+                <div class="card__img">
+                    <img src="${imagenSrc}" alt="${producto.nombre}" loading="lazy"
+                         onerror="this.src='https://via.placeholder.com/200x200?text=Imagen+No+Disponible'">
+                </div>
+                <h3 class="card__title">${producto.nombre}</h3>
+                <div class="card__price">${precioFormateado}</div>
+                <button class="btn btn--primary" data-add="${producto.id}">Agregar al carrito</button>
+            </article>
+        `;
+    }).join('');
+    
+    // Re-activar los botones de agregar al carrito
+    activarBotonesCarrito();
+}
+
+function mostrarError(mensaje) {
+    const gridProductos = document.getElementById('gridProductos');
+    gridProductos.innerHTML = `
+        <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px;">
+            <div style="font-size: 3rem; margin-bottom: 20px;">❌</div>
+            <h3 style="color: var(--danger); margin-bottom: 10px;">Error</h3>
+            <p style="color: var(--muted); margin-bottom: 20px;">${mensaje}</p>
+            <button onclick="mostrarTodosLosProductos()" class="btn btn--primary">
+                Volver al catálogo
+            </button>
+        </div>
+    `;
+}
+
+function mostrarTodosLosProductos() {
+    // Esta función debería recargar todos los productos
+    // Por ahora, simulemos recargando la página
+    location.reload();
+}
+
+function activarBotonesCarrito() {
+    // Reactivar la funcionalidad de agregar al carrito
+    document.querySelectorAll('[data-add]').forEach(boton => {
+        boton.addEventListener('click', function() {
+            const id = this.getAttribute('data-add');
+            // Tu código existente para agregar al carrito
+            console.log('Agregar producto ID:', id);
+            
+            // Efecto visual
+            this.textContent = '✓ Agregado';
+            this.style.background = '#4CAF50';
+            setTimeout(() => {
+                this.textContent = 'Agregar al carrito';
+                this.style.background = '';
+            }, 2000);
+        });
+    });
+}
+
+// Agregar animación de loading
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+`;
+async function buscarYFiltrarCatalogo(termino) {
+    try {
+        // Mostrar loading
+        mostrarLoadingBusqueda(termino);
+        
+        // ✅ GUARDAR EN EL HISTORIAL (línea clave que falta)
+        window.history.pushState({ 
+            busqueda: termino 
+        }, '', `#buscar-${encodeURIComponent(termino)}`);
+        
+        // Ocultar todas las secciones excepto header y footer
+        ocultarSecciones();
+        
+        const response = await fetch(`buscar_productos.php?q=${encodeURIComponent(termino)}`);
+        const data = await response.json();
+        
+        if (data.success) {
+            mostrarResultadosCompletos(data.productos, termino);
+        } else {
+            mostrarErrorBusquedaCompleta('Error en la búsqueda');
+        }
+        
+    } catch (error) {
+        console.error('Error en búsqueda:', error);
+        mostrarErrorBusquedaCompleta('Error de conexión');
+    }
+}
+
+function mostrarLoadingBusqueda(termino) {
+    const gridProductos = document.getElementById('gridProductos');
+    const catalogo = document.getElementById('catalogo');
+    
+    // Mostrar catálogo y ocultar otras secciones
+    catalogo.hidden = false;
+    
+    gridProductos.innerHTML = `
+        <div style="grid-column: 1/-1; text-align: center; padding: 80px 20px;">
+            <div class="loading-spinner" style="
+                width: 60px; 
+                height: 60px; 
+                border: 5px solid #f3f3f3; 
+                border-top: 5px solid var(--accent); 
+                border-radius: 50%; 
+                animation: spin 1s linear infinite;
+                margin: 0 auto 30px;
+            "></div>
+            <h2 style="color: var(--accent); margin-bottom: 15px;">Buscando "${termino}"</h2>
+            <p style="color: var(--muted);">Revisando nuestro inventario...</p>
+        </div>
+    `;
+    
+    // Hacer scroll al catálogo
+    catalogo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function ocultarSecciones() {
+    // Ocultar todas las secciones principales excepto header, catálogo y footer
+    const seccionesAOcultar = [
+        '.hero',
+        '.benefits',
+        '.buscador-mascotas',
+        '.featured-cats',
+        '.subcats',
+        '.ofertas',
+        '.populares',
+        '.recomendados',
+        '.marcas-destacadas'
+    ];
+    
+    seccionesAOcultar.forEach(selector => {
+        const elementos = document.querySelectorAll(selector);
+        elementos.forEach(el => {
+            el.style.display = 'none';
+        });
+    });
+    
+    // Asegurar que el catálogo esté visible
+    const catalogo = document.getElementById('catalogo');
+    if (catalogo) {
+        catalogo.style.display = 'block';
+        catalogo.hidden = false;
+    }
+}
+
+function mostrarResultadosCompletos(productos, termino) {
+    const gridProductos = document.getElementById('gridProductos');
+    const tituloCatalogo = document.getElementById('tituloCatalogo');
+    const contadorRes = document.getElementById('contadorResultados');
+    
+    // Actualizar títulos
+    tituloCatalogo.textContent = `Resultados para "${termino}"`;
+    contadorRes.textContent = `${productos.length} producto${productos.length !== 1 ? 's' : ''} encontrado${productos.length !== 1 ? 's' : ''}`;
+    
+    if (productos.length === 0) {
+        gridProductos.innerHTML = `
+            <div style="grid-column: 1/-1; text-align: center; padding: 80px 20px;">
+                <div style="font-size: 4rem; margin-bottom: 20px;">🔍</div>
+                <h2 style="color: var(--muted); margin-bottom: 15px;">No encontramos resultados</h2>
+                <p style="color: var(--muted); margin-bottom: 10px;">No hay productos que coincidan con "<strong>${termino}</strong>"</p>
+                <p style="color: var(--muted); margin-bottom: 30px; font-size: 0.9rem;">
+                    Sugerencias: 
+                    <br>• Revisa la ortografía
+                    <br>• Usa términos más generales
+                    <br>• Explora nuestras categorías
+                </p>
+                <button onclick="mostrarPaginaCompleta()" class="btn btn--primary" style="padding: 12px 25px;">
+                    ← Volver al Catálogo Completo
+                </button>
+            </div>
+        `;
+        return;
+    }
+    
+    // Mostrar productos en grid
+    gridProductos.innerHTML = productos.map(producto => {
+        const precioFormateado = new Intl.NumberFormat('es-CO', {
+            style: 'currency',
+            currency: 'COP',
+            minimumFractionDigits: 0
+        }).format(producto.precio);
+        
+        const imagenSrc = producto.imagen && producto.imagen !== 'NULL' ? 
+                         `images/${producto.imagen}` : 
+                         'https://via.placeholder.com/200x200?text=Imagen+No+Disponible';
+        
+        const descripcionCorta = producto.descripcion ? 
+                                producto.descripcion.substring(0, 80) + '...' : 
+                                'Descripción no disponible';
+        
+        return `
+            <article class="card" style="transition: all 0.3s ease;">
+                <div class="card__img">
+                    <img src="${imagenSrc}" alt="${producto.nombre}" 
+                         onerror="this.src='https://via.placeholder.com/200x200?text=Imagen+No+Disponible'">
+                </div>
+                <h3 class="card__title">${producto.nombre}</h3>
+                <p style="color: var(--muted); font-size: 0.9rem; margin: 5px 0; line-height: 1.4;">
+                    ${descripcionCorta}
+                </p>
+                <div style="display: flex; align-items: center; justify-content: space-between; width: 100%; margin: 10px 0;">
+                    <div class="card__price">${precioFormateado}</div>
+                    ${producto.marca ? `
+                    <span style="background: #e3f2fd; color: #1976d2; padding: 3px 8px; border-radius: 10px; font-size: 0.8rem; font-weight: 600;">
+                        ${producto.marca}
+                    </span>
+                    ` : ''}
+                </div>
+                <button class="btn btn--primary" data-add="${producto.id}" 
+                        style="width: 100%; margin-top: 10px;">
+                    🛒 Agregar
+                </button>
+            </article>
+        `;
+    }).join('');
+    
+    // Reactivar botones de carrito
+    activarBotonesCarritoBusqueda(productos);
+}
+
+function activarBotonesCarritoBusqueda(productos) {
+    document.querySelectorAll('[data-add]').forEach((boton, index) => {
+        boton.addEventListener('click', function() {
+            const productoId = this.getAttribute('data-add');
+            const producto = productos.find(p => p.id == productoId);
+            
+            if (producto) {
+                agregarProductoAlCarrito(producto);
+                
+                // Efecto visual
+                this.innerHTML = '✓ Agregado';
+                this.style.background = '#4CAF50';
+                
+                setTimeout(() => {
+                    this.innerHTML = '🛒 Agregar';
+                    this.style.background = '';
+                }, 2000);
+            }
+        });
+    });
+}
+
+function mostrarErrorBusquedaCompleta(mensaje) {
+    const gridProductos = document.getElementById('gridProductos');
+    gridProductos.innerHTML = `
+        <div style="grid-column: 1/-1; text-align: center; padding: 80px 20px;">
+            <div style="font-size: 4rem; margin-bottom: 20px;">❌</div>
+            <h2 style="color: var(--danger); margin-bottom: 15px;">Error en la búsqueda</h2>
+            <p style="color: var(--muted); margin-bottom: 30px;">${mensaje}</p>
+            <button onclick="mostrarPaginaCompleta()" class="btn btn--primary">
+                Volver al Catálogo
+            </button>
+        </div>
+    `;
+}
+
+function mostrarPaginaCompleta() {
+    // Mostrar nuevamente todas las secciones principales
+    const secciones = [
+        '.hero',
+        '.benefits',
+        '.buscador-mascotas',
+        '.featured-cats',
+        '.subcats',
+        '.ofertas',
+        '.populares',
+        '.recomendados',
+        '.marcas-destacadas'
+    ];
+
+    secciones.forEach(selector => {
+        document.querySelectorAll(selector).forEach(el => {
+            el.style.display = ''; // vuelve a mostrar cada sección
+        });
+    });
+
+    // Ocultar el catálogo
+    const catalogo = document.getElementById('catalogo');
+    if (catalogo) {
+        catalogo.hidden = true;
+        catalogo.style.display = 'none';
+    }
+
+    // Limpiar el campo de búsqueda
+    const buscador = document.getElementById('buscador');
+    if (buscador) buscador.value = '';
+
+    // ✅ Quita el #buscar de la URL sin recargar la página
+    history.replaceState(null, '', window.location.pathname);
+
+    // Volver suavemente al inicio
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
 
+// También modificar el evento del buscador para que funcione con Enter
+document.addEventListener('DOMContentLoaded', function() {
+    const buscador = document.getElementById('buscador');
+    
+    if (buscador) {
+        // Buscar al presionar Enter
+        buscador.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const termino = this.value.trim();
+                if (termino.length >= 2) {
+                    buscarYFiltrarCatalogo(termino);
+                }
+            }
+        });
+        
+        // También buscar mientras escribe (opcional)
+        let timeoutId;
+        buscador.addEventListener('input', function(e) {
+            clearTimeout(timeoutId);
+            const termino = e.target.value.trim();
+            
+            if (termino.length >= 3) {
+                timeoutId = setTimeout(() => {
+                    buscarYFiltrarCatalogo(termino);
+                }, 500);
+            }
+        });
+    }
+});
+// ============================
+// Controlar el botón "Atrás" del navegador
+// ============================
+window.addEventListener('popstate', function(event) {
+    if (event.state && event.state.busqueda) {
+        // Si el usuario vuelve atrás a una búsqueda anterior
+        buscarYFiltrarCatalogo(event.state.busqueda);
+    } else {
+        // Si no hay búsqueda guardada, mostramos la página completa
+        mostrarPaginaCompleta();
+    }
+});
+// ============================================
+// 🐾 CONTROL DE NAVEGACIÓN ENTRE CATEGORÍAS Y MARCAS
+// ============================================
+
+// Detectar clics en categorías (menú, tarjetas, subcats, footer)
+document.querySelectorAll(
+  ".nav__link, .cat-card, .subcat-card, .footer-cat"
+).forEach(btn => {
+  btn.addEventListener("click", e => {
+    e.preventDefault();
+
+    const categoria = e.currentTarget.dataset.cat;
+    if (!categoria) return;
+
+    // Buscar productos por categoría
+    buscarYFiltrarCatalogo(categoria);
+
+    // Guardar en el historial del navegador
+    history.pushState({ cat: categoria }, "", `?cat=${encodeURIComponent(categoria)}`);
+  });
+});
+
+// Detectar clics en marcas destacadas
+document.querySelectorAll(".marca-item").forEach(btn => {
+  btn.addEventListener("click", e => {
+    e.preventDefault();
+
+    const marca = e.currentTarget.dataset.marca;
+    if (!marca) return;
+
+    buscarYFiltrarCatalogo(marca);
+    history.pushState({ marca: marca }, "", `?marca=${encodeURIComponent(marca)}`);
+  });
+});
+
+// --- Control del botón "Atrás" del navegador ---
+window.addEventListener("popstate", e => {
+  if (e.state && e.state.cat) {
+    buscarYFiltrarCatalogo(e.state.cat);
+  } else if (e.state && e.state.marca) {
+    buscarYFiltrarCatalogo(e.state.marca);
+  } else {
+    mostrarPaginaCompleta();
+  }
+});
+
+// --- Si el usuario entra con ?cat= o ?marca= ---
+document.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  const cat = params.get("cat");
+  const marca = params.get("marca");
+
+  if (cat) {
+    buscarYFiltrarCatalogo(cat);
+  } else if (marca) {
+    buscarYFiltrarCatalogo(marca);
+  }
+});
 
 
 

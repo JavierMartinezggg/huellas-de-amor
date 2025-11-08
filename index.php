@@ -363,7 +363,7 @@ session_start();
             <li><a href="productos.html">Productos</a></li>
             <li><a href="blog.html">Blog</a></li>
             <li><a href="nosotros.html">Nosotros</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
+            <li><a href="contacto.php">Contacto</a></li>
           </ul>
         </div>
 

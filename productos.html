@@ -132,35 +132,31 @@
     </div>
   </footer>
 
+  
   <script>
 document.addEventListener('DOMContentLoaded', () => {
   fetch('api_productos.php')
     .then(res => res.json())
     .then(productos => {
-      console.log('✅ Productos recibidos:', productos); // 👈 Esto nos confirma si llegan
+      console.log('✅ Productos recibidos:', productos);
       const cont = document.getElementById('gridProductos');
       cont.innerHTML = '';
 
       productos.forEach(p => {
-        const card = document.createElement('div');
-        card.classList.add('producto-card');
-        card.innerHTML = `
-          <img src="${p.imagen}" alt="${p.nombre}" loading="lazy">
-          <h3>${p.nombre}</h3>
-          <p>${p.descripcion}</p>
-          <span class="precio">$${Number(p.precio).toLocaleString()}</span>
+        // 👇 Aseguramos la ruta completa de la imagen
+        const rutaImagen = `images/${p.imagen.split('/').pop()}`;
+        cont.innerHTML += `
+          <div class="producto-card">
+            <img src="${rutaImagen}" alt="${p.nombre}" loading="lazy">
+            <h3>${p.nombre}</h3>
+            <p>${p.descripcion}</p>
+            <span class="precio">$${Number(p.precio).toLocaleString()}</span>
+          </div>
         `;
-        cont.appendChild(card);
       });
     })
     .catch(err => console.error('❌ Error cargando productos:', err));
 });
-
-
-
-
-
 </script>
 </body>
 </html>
-

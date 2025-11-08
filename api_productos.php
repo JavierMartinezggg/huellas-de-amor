@@ -1,30 +1,30 @@
 <?php
 require "conexion.php";
 
-// Traer productos con descuento mayor a 0
-$sql = "SELECT id, nombre, descripcion, precio, descuento, imagen 
-        FROM productos 
-        WHERE descuento > 0 
-        ORDER BY creado_en DESC 
-        LIMIT 6";
-
+// Consultar productos
+$sql = "SELECT id, nombre, descripcion, precio, imagen FROM productos ORDER BY id ASC";
 $resultado = $conn->query($sql);
 
 $productos = [];
 
-if ($resultado->num_rows > 0) {
+if ($resultado && $resultado->num_rows > 0) {
     while ($fila = $resultado->fetch_assoc()) {
+
+        // Limpiar y asegurar la ruta correcta
+        $nombreArchivo = basename($fila['imagen']); // extrae solo el nombre del archivo
+        $rutaFinal = "images/" . $nombreArchivo;
+
         $productos[] = [
             "id" => $fila["id"],
             "nombre" => $fila["nombre"],
             "descripcion" => $fila["descripcion"],
             "precio" => $fila["precio"],
-            "descuento" => $fila["descuento"],
-            "imagen" => "images/" . $fila["imagen"] // 👈 Aquí está la clave
+            "imagen" => $rutaFinal
         ];
     }
 }
 
-// Devolver como JSON (para usarlo en JS)
-echo json_encode($productos);
+// Enviar como JSON
+header('Content-Type: application/json; charset=utf-8');
+echo json_encode($productos, JSON_UNESCAPED_UNICODE);
 ?>

@@ -12,14 +12,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
-        $sql = "INSERT INTO usuarios (nombre, email, password) 
-                VALUES ('$nombre', '$email', '$password_hash')";
+        $stmt = $conn->prepare(
+    "INSERT INTO usuarios (nombre, email, password) VALUES (?, ?, ?)"
+);
+$stmt->bind_param("sss", $nombre, $email, $password_hash);
 
-        if ($conn->query($sql) === TRUE) {
-            echo "<script>alert('✅ Usuario registrado correctamente');</script>";
-        } else {
-            echo "❌ Error: " . $conn->error;
-        }
+if ($stmt->execute()) {
+    echo "<script>alert('✅ Usuario registrado correctamente');</script>";
+} else {
+    echo "❌ Error al registrar usuario";
+}
+
+$stmt->close();
+
     }
 }
 ?>

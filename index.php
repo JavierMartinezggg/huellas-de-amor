@@ -21,8 +21,8 @@ session_start();
   <!-- Header unificado -->
   <header class="topbar">
     <div class="container topbar__inner">
-      <a class="brand" href="index.html">
-        <img src="images/logo.svg" alt="Huellas de Amor" class="brand__logo" loading="lazy">
+      <a class="brand" href="index.php">
+        <img src="images/favicon.png" alt="Huellas de Amor" class="brand__logo" loading="lazy">
         <span class="brand__name">Huellas de Amor</span>
       </a>
 
@@ -100,67 +100,90 @@ session_start();
   <button class="hero__nav next" id="next"><i class="fa-solid fa-chevron-right"></i></button>
 </section>
 
-<!-- Beneficios -->
+<!-- BENEFICIOS - VERSIÓN ARMONIOSA -->
 <section class="benefits">
   <div class="container benefits__grid">
-    <div class="benefit"><i class="fa-solid fa-truck-fast"></i> Entrega el mismo día</div>
-    <div class="benefit"><i class="fa-solid fa-shield"></i> Compra segura</div>
-    <div class="benefit"><i class="fa-solid fa-hand-holding-dollar"></i> Pago contra entrega</div>
-    <div class="benefit"><i class="fa-solid fa-rotate"></i> Cambios fáciles</div>
+    <div class="benefit">
+      <span class="badge-new">RÁPIDO</span>
+      <i class="fa-solid fa-bolt"></i>
+      Entrega el mismo día
+      <span class="counter">⚡ 24h</span>
+    </div>
+    
+    <div class="benefit">
+      <i class="fa-solid fa-shield-check"></i>
+      Compra segura
+      <span class="counter">🔒 Garantía</span>
+    </div>
+    
+    <div class="benefit">
+      <i class="fa-solid fa-hand-holding-heart"></i>
+      Pago contra entrega
+      <span class="counter">💖 Sin riesgo</span>
+    </div>
+    
+    <div class="benefit">
+      <i class="fa-solid fa-arrow-rotate-left"></i>
+      Cambios fáciles
+      <span class="counter">🔄 30 días</span>
+    </div>
   </div>
 </section>
 
-
-  <!-- Categorías destacadas -->
-  <section class="featured-cats container busca-mascota">
-    <h2 class="section-title">Busca por tu mascota</h2>
-    <div class="featured-cats__grid">
-      <button class="cat-card" data-cat="perros">
-        <img src="images/cat-perros.png" alt="Perros" loading="lazy"><span>Perros</span>
-      </button>
-      <button class="cat-card" data-cat="gatos">
-        <img src="images/cat-gatos.png" alt="Gatos" loading="lazy"><span>Gatos</span>
-      </button>
-      <button class="cat-card" data-cat="aves">
-        <img src="images/cat-aves.png" alt="Aves" loading="lazy"><span>Aves</span>
-      </button>
-      <button class="cat-card" data-cat="peces">
-        <img src="images/cat-peces.png" alt="Peces" loading="lazy"><span>Peces</span>
-      </button>
-    </div>
-  </section>
+ <!-- CATEGORÍAS DESTACADAS (añade la clase "busca-mascota") -->
+<section class="featured-cats container busca-mascota">
+  <h2 class="section-title">Busca por tu mascota</h2>
+  <div class="featured-cats__grid">
+    <button class="cat-card" data-cat="perros">
+      <img src="images/cat-perros.png" alt="Perros" loading="lazy"><span>Perros</span>
+    </button>
+    <button class="cat-card" data-cat="gatos">
+      <img src="images/cat-gatos.png" alt="Gatos" loading="lazy"><span>Gatos</span>
+    </button>
+    <button class="cat-card" data-cat="aves">
+      <img src="images/cat-aves.png" alt="Aves" loading="lazy"><span>Aves</span>
+    </button>
+    <button class="cat-card" data-cat="peces">
+      <img src="images/cat-peces.png" alt="Peces" loading="lazy"><span>Peces</span>
+    </button>
+  </div>
+</section>
   
-<!-- Marcas Destacadas -->
+<!-- === MARCAS DESTACADAS === -->
+
 <section class="marcas-destacadas">
-    <div class="container">
-        <h3 class="section-subtitle">Marcas destacadas del mes</h3>
-        <div class="marcas-grid">
-            <div class="marca-item" data-marca="Purina">
-                <div class="marca-logo">
-                    <img src="images/product01.png" alt="Purina">
-                </div>
-                <span>Purina</span>
-            </div>
-            <div class="marca-item" data-marca="Pro Plan">
-                <div class="marca-logo">
-                    <img src="images/product02.png" alt="Pro Plan">
-                </div>
-                <span>Pro Plan</span>
-            </div>
-            <div class="marca-item" data-marca="Hills">
-                <div class="marca-logo">
-                    <img src="images/product03.png" alt="Hills">
-                </div>
-                <span>Hills</span>
-            </div>
-            <div class="marca-item" data-marca="Royal Canin">
-                <div class="marca-logo">
-                    <img src="images/cat-alimento-gato.png" alt="Royal Canin">
-                </div>
-                <span>Royal Canin</span>
-            </div>
+  <div class="container">
+    <h3 class="section-subtitle">Marcas destacadas del mes</h3>
+    <p class="text-center" style="color: #64748b; margin-bottom: 30px; font-size: 1rem;">
+      Las marcas preferidas por nuestros clientes y sus mascotas
+    </p>
+    <div class="marcas-grid">
+      <div class="marca-item" data-marca="Purina">
+        <div class="marca-logo">
+          <img src="images/product01.png" alt="Purina">
         </div>
+        <span>Purina</span>
+      </div>
+      <div class="marca-item" data-marca="Pro Plan">
+        <div class="marca-logo">
+          <img src="images/product02.png" alt="Pro Plan">
+        </div>
+        <span>Pro Plan</span>
+      </div>
+      <div class="marca-item" data-marca="Hills">
+        <div class="marca-logo">
+          <img src="images/product03.png" alt="Hills">
+        </div>
+        <span>Hills</span>
+      </div>
+      <div class="marca-item" data-marca="Royal Canin">
+        <div class="marca-logo">
+          <img src="images/cat-alimento-gato.png" alt="Royal Canin">
+        </div>
+        <span>Royal Canin</span>
+      </div>
     </div>
+  </div>
 </section>
 
   <!-- Subcategorías -->
@@ -259,40 +282,55 @@ session_start();
 </section>
 
 <!-- === POPULARES PARA GATOS === -->
-<section class="populares container">
-  <h2 class="section-title">Populares para gatos</h2>
+<section class="populares container populares-pro">
+  <div class="populares-header">
+    <h2 class="section-title">Populares para gatos</h2>
+    <div class="populares-controls">
+      <button class="pop-btn prev pro" data-dir="left">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button class="pop-btn next pro" data-dir="right">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+    </div>
+  </div>
 
-  <!-- Flechas visibles -->
-  <button class="pop-btn prev" data-dir="left"><i class="fa-solid fa-chevron-left"></i></button>
-  <button class="pop-btn next" data-dir="right"><i class="fa-solid fa-chevron-right"></i></button>
-
-  <div class="populares-grid">
-    <div class="populares-items" id="pop-gatos">
+  <div class="populares-grid pro">
+    <div class="populares-img pro">
+      <img src="images/pop-gatos.jpg" alt="Gato feliz" loading="lazy">
+      <div class="populares-badge">🔥 Más vendido</div>
+    </div>
+    
+    <div class="populares-items pro" id="pop-gatos">
       <?php 
         include("productos-populares.php");
         mostrarProductos($resultado_gatos);
       ?>
     </div>
-    <div class="populares-img">
-      <img src="images/pop-gatos.jpg" alt="Gato feliz" loading="lazy">
-    </div>
   </div>
 </section>
 
-
 <!-- === POPULARES PARA PERROS === -->
-<section class="populares container">
-  <h2 class="section-title">Populares para perros</h2>
-
-  <!-- Flechas visibles -->
-  <button class="pop-btn prev" data-dir="left"><i class="fa-solid fa-chevron-left"></i></button>
-  <button class="pop-btn next" data-dir="right"><i class="fa-solid fa-chevron-right"></i></button>
-
-  <div class="populares-grid">
-    <div class="populares-img">
-      <img src="images/pop-perros.jpg" alt="Perro adorable" loading="lazy">
+<section class="populares container populares-pro">
+  <div class="populares-header">
+    <h2 class="section-title">Populares para perros</h2>
+    <div class="populares-controls">
+      <button class="pop-btn prev pro" data-dir="left">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+      <button class="pop-btn next pro" data-dir="right">
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
     </div>
-    <div class="populares-items" id="pop-perros">
+  </div>
+
+  <div class="populares-grid pro">
+    <div class="populares-img pro">
+      <img src="images/pop-perros.jpg" alt="Perro adorable" loading="lazy">
+      <div class="populares-badge">⭐ Recomendado</div>
+    </div>
+    
+    <div class="populares-items pro" id="pop-perros">
       <?php mostrarProductos($resultado_perros); ?>
     </div>
   </div>

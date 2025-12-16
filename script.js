@@ -11,29 +11,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // -------------------- Datos base (demo) --------------------
+  
+    // -------------------- Datos base (REALES) --------------------
   const DATA = [
-    {id:1, cat:'perros', nombre:'Alimento Seco Adulto 15kg', precio:159000, img:'images/prod/perro-alimento1.png', tags:'alimento perro seco adulto'},
-    {id:2, cat:'perros', nombre:'Juguete Pelota Interactiva', precio:35000, img:'images/prod/perro-juguete1.png', tags:'juguete interactivo perro pelota'},
-    {id:3, cat:'perros', nombre:'Shampoo Piel Sensible', precio:26000, img:'images/prod/perro-shampoo.png', tags:'higiene shampoo perro piel sensible'},
-    {id:4, cat:'perros', nombre:'Collar Ajustable Nylon', precio:18000, img:'images/prod/perro-collar.png', tags:'accesorios collar perro nylon'},
-    {id:11, cat:'gatos', nombre:'Arena Aglomerante 10kg', precio:52000, img:'images/prod/gato-arena.png', tags:'arena gatos higiene'},
-    {id:12, cat:'gatos', nombre:'Rascador Deluxe', precio:99000, img:'images/prod/gato-rascador.png', tags:'rascador gatos juego'},
-    {id:13, cat:'gatos', nombre:'Alimento Húmedo Pack x12', precio:68000, img:'images/prod/gato-humedo.png', tags:'alimento humedo gatos'},
-    {id:14, cat:'gatos', nombre:'Fuente de Agua', precio:115000, img:'images/prod/gato-fuente.png', tags:'fuente agua gatos bowl'},
-    {id:21, cat:'aves', nombre:'Mezcla Semillas Canarios', precio:21000, img:'images/prod/ave-semillas.png', tags:'semillas alimento aves'},
-    {id:22, cat:'aves', nombre:'Jaula Mediana', precio:149000, img:'images/prod/ave-jaula.png', tags:'jaula aves perchas'},
-    {id:23, cat:'aves', nombre:'Bebedero Antiderrame', precio:16000, img:'images/prod/ave-bebedero.png', tags:'bebedero aves comedero'},
-    {id:31, cat:'peces', nombre:'Acuario 40L con Luz LED', precio:329000, img:'images/prod/pez-acuario.png', tags:'acuario peces iluminacion'},
-    {id:32, cat:'peces', nombre:'Filtro Interno 600L/h', precio:78000, img:'images/prod/pez-filtro.png', tags:'filtro peces bomba'},
-    {id:33, cat:'peces', nombre:'Acondicionador Anticloro', precio:19000, img:'images/prod/pez-anticloro.png', tags:'anticloro acondicionador peces'},
+    {id:1, cat:'perros', nombre:'Alimento Premium Perros', precio:159000, img:'images/prod/perro-alimento1.png', tags:'alimento perro'},
+    {id:2, cat:'gatos', nombre:'Snack Natural Gatos', precio:12500, img:'images/prod/gato-snack.png', tags:'snack gato'},
+    {id:3, cat:'perros', nombre:'Juguete interactivo', precio:18000, img:'images/prod/juguete-pelota.png', tags:'juguete perro'},
+    {id:5, cat:'aves', nombre:'Jaula para aves', precio:59000, img:'images/prod/ave-jaula.png', tags:'jaula ave'},
+    {id:6, cat:'peces', nombre:'Alimento para peces', precio:7200, img:'images/prod/pez-alimento.png', tags:'alimento pez'},
+    {id:7, cat:'gatos', nombre:'Juguete interactivo', precio:18000, img:'images/prod/juguete-pelota.png', tags:'juguete gato'},
+    {id:10, cat:'gatos', nombre:'Arena Aglomerante', precio:52000, img:'images/prod/gato-arena.png', tags:'arena gato'},
+    {id:11, cat:'aves', nombre:'Jaula para aves', precio:59000, img:'images/prod/ave-jaula.png', tags:'jaula ave'},
+    {id:15, cat:'gatos', nombre:'Snack Natural Gato', precio:12500, img:'images/cat-snack1.jpg', tags:'snack gato'},
+    {id:16, cat:'gatos', nombre:'Juguete Ratón Gato', precio:18000, img:'images/cat-juguete1.jpg', tags:'juguete gato'},
+    {id:18, cat:'gatos', nombre:'Cepillo Gato Suave', precio:16000, img:'images/cat-cepillo1.jpg', tags:'cepillo gato'},
+    {id:19, cat:'perros', nombre:'Comida Perro', precio:159000, img:'images/dog-alimento1.jpg', tags:'comida perro'},
+    {id:20, cat:'perros', nombre:'Pelota Interactiva Perro', precio:18000, img:'images/dog-juguete1.jpg', tags:'pelota perro'},
+    {id:21, cat:'perros', nombre:'Cama Mediana Perro', precio:52000, img:'images/dog-cama1.jpg', tags:'cama perro'},
+    {id:22, cat:'perros', nombre:'Snack Perro Saludable', precio:12000, img:'images/dog-snack1.jpg', tags:'snack perro'},
+    {id:23, cat:'perros', nombre:'Collar Antipulgas', precio:24000, img:'images/dog-collar1.jpg', tags:'collar perro'},
+    {id:24, cat:'perros', nombre:'Shampoo para Perros', precio:29000, img:'images/dog-shampoo1.jpg', tags:'shampoo perro'},
+    
     // 🔹 OFERTAS ESPECIALES
-    {id:101, cat:'perros', nombre:'Alimento Premium Perros', precio:42390, img:'images/producto1.png', tags:'alimento perro oferta descuento'},
-    {id:102, cat:'gatos', nombre:'Snack Natural Gatos', precio:12500, img:'images/producto2.png', tags:'snack gatos oferta descuento'},
-    {id:103, cat:'perros', nombre:'Juguete interactivo', precio:18000, img:'images/producto3.png', tags:'juguete perro oferta descuento'},
-    {id:104, cat:'perros', nombre:'Accesorio', precio:8900, img:'images/producto4.png', tags:'accesorio perro oferta descuento'},
-    {id:105, cat:'peces', nombre:'Alimento Peces', precio:7200, img:'images/producto5.png', tags:'alimento peces oferta descuento'},
-    {id:106, cat:'aves', nombre:'Jaula para aves', precio:59000, img:'images/producto6.png', tags:'jaula aves oferta descuento'}
+    {id:101, cat:'perros', nombre:'Alimento Premium Perros (Oferta)', precio:42390, img:'images/producto1.png', tags:'oferta alimento'},
+    {id:102, cat:'gatos', nombre:'Snack Natural Gatos (Oferta)', precio:12500, img:'images/producto2.png', tags:'oferta snack'},
+    {id:103, cat:'perros', nombre:'Juguete interactivo (Oferta)', precio:18000, img:'images/producto3.png', tags:'oferta juguete'},
+    {id:104, cat:'perros', nombre:'Accesorio (Oferta)', precio:8900, img:'images/producto4.png', tags:'oferta accesorio'},
+    {id:105, cat:'peces', nombre:'Alimento Peces (Oferta)', precio:7200, img:'images/producto5.png', tags:'oferta pez'},
+    {id:106, cat:'aves', nombre:'Jaula para aves (Oferta)', precio:59000, img:'images/producto6.png', tags:'oferta jaula'}
   ];
 
   const DESTACADOS = [DATA[0], DATA[11], DATA[22], DATA[31]];
@@ -958,6 +963,126 @@ document.addEventListener("DOMContentLoaded", () => {
     buscarYFiltrarCatalogo(marca);
   }
 });
+// FLECHAS SIMPLES PRO
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.pop-btn.pro').forEach(boton => {
+    boton.addEventListener('click', function() {
+      const seccion = this.closest('.populares-pro');
+      const contenedor = seccion.querySelector('.populares-items.pro');
+      if (!contenedor) return;
+      
+      const mover = 250;
+      if (this.dataset.dir === 'left') {
+        contenedor.scrollBy({ left: -mover, behavior: 'smooth' });
+      } else {
+        contenedor.scrollBy({ left: mover, behavior: 'smooth' });
+      }
+    });
+  });
+});
+// ======================= //
+// INTERACTIVIDAD MEJORADA PARA MARCAS Y CATEGORÍAS
+// ======================= //
+
+// Efecto hover mejorado para categorías
+document.querySelectorAll('.busca-mascota .cat-card').forEach(card => {
+  card.addEventListener('mouseenter', function() {
+    this.style.transform = 'translateY(-8px)';
+    this.style.boxShadow = '0 15px 30px rgba(249, 115, 22, 0.2)';
+  });
+  
+  card.addEventListener('mouseleave', function() {
+    this.style.transform = 'translateY(0)';
+    this.style.boxShadow = '0 5px 15px rgba(0,0,0,0.05)';
+  });
+});
+
+// Efecto hover mejorado para marcas
+document.querySelectorAll('.marca-item').forEach(marca => {
+  marca.addEventListener('mouseenter', function() {
+    this.style.transform = 'translateY(-8px) scale(1.02)';
+  });
+  
+  marca.addEventListener('mouseleave', function() {
+    this.style.transform = 'translateY(0) scale(1)';
+  });
+  
+  // Click en marcas
+  marca.addEventListener('click', function() {
+    const marcaNombre = this.getAttribute('data-marca');
+    
+    // Feedback visual
+    this.style.background = '#fffbeb';
+    this.style.borderColor = '#fbbf24';
+    
+    setTimeout(() => {
+      this.style.background = '';
+      this.style.borderColor = '';
+    }, 300);
+    
+    console.log(`Marca seleccionada: ${marcaNombre}`);
+    // Aquí puedes agregar la funcionalidad para filtrar por marca
+  });
+});
+
+// Animación suave al cargar
+document.addEventListener('DOMContentLoaded', function() {
+  // Animación para categorías
+  setTimeout(() => {
+    document.querySelectorAll('.busca-mascota .cat-card').forEach((card, index) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      
+      setTimeout(() => {
+        card.style.transition = 'all 0.5s ease';
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, index * 100);
+    });
+  }, 300);
+});
+// ANIMACIONES MEJORADAS PARA BENEFICIOS Y CATEGORÍAS
+document.addEventListener('DOMContentLoaded', function() {
+  // Animación para beneficios
+  const beneficios = document.querySelectorAll('.benefit');
+  beneficios.forEach((beneficio, index) => {
+    // Establecer estado inicial
+    beneficio.style.opacity = '0';
+    beneficio.style.transform = 'translateY(30px)';
+    
+    // Animación escalonada
+    setTimeout(() => {
+      beneficio.style.transition = 'all 0.6s ease';
+      beneficio.style.opacity = '1';
+      beneficio.style.transform = 'translateY(0)';
+    }, 200 + (index * 100));
+  });
+  
+  // Animación para categorías de mascotas
+  const categorias = document.querySelectorAll('.cat-card');
+  categorias.forEach((categoria, index) => {
+    categoria.style.opacity = '0';
+    categoria.style.transform = 'translateY(40px) scale(0.9)';
+    
+    setTimeout(() => {
+      categoria.style.transition = 'all 0.7s ease';
+      categoria.style.opacity = '1';
+      categoria.style.transform = 'translateY(0) scale(1)';
+    }, 400 + (index * 150));
+  });
+  
+  // Efecto hover mejorado
+  document.querySelectorAll('.cat-card').forEach(card => {
+    card.addEventListener('mouseenter', function() {
+      this.style.zIndex = '10';
+    });
+    
+    card.addEventListener('mouseleave', function() {
+      this.style.zIndex = '1';
+    });
+  });
+});
+
 
 
 
